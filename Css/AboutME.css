@@ -35,7 +35,7 @@ body{
     left: 0%;
 }
 
-@media only screen and (orientation: portrait){
+@media only screen and (max-width:600px){
     #her{
         overflow: hidden;
         align-items: center;
