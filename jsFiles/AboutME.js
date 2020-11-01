@@ -32,6 +32,7 @@ var imageDoc = document.getElementById("ig");
                 document.getElementById("loader").style.visibility="hidden";
                 document.getElementById("loader").style.height = 0+'px';
                 document.getElementById("page").style.visibility="visible";
+                if(window.innerWidth>(600+'px'))
                 iq();
             }
 
@@ -87,6 +88,7 @@ var imageDoc = document.getElementById("ig");
                 while(deltaTime>1){
                     deltaTime/=10;
                 }
+                
                 if(deltaTime <threshold)deltaTime=threshold;    
                 currenTime = Date.now();
                 totalSpeed = deltaTime*frameSpeed;
