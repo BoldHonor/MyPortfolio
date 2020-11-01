@@ -81,8 +81,7 @@ var imageDoc = document.getElementById("ig");
 
             function play()
             {
-                if(window.innerWidth>(600))
-                iq();
+                
                 
                 
                 if(maxScrollHeight< body.scrollHeight - window.innerHeight) {
