@@ -71,12 +71,12 @@ var imageDoc = document.getElementById("ig");
                 imagelist[k-1].onload=function()
                 {
                     console.log('loaded '+k-1);
-                    setTimeout(iq,1000);
+                    iq();
                 };
             }
             iq();
 
-            
+
             function play()
             {
                 if(maxScrollHeight< body.scrollHeight - window.innerHeight) {
