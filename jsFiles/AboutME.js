@@ -13,7 +13,29 @@ var imageDoc = document.getElementById("ig");
             let maxScrollHeight = 1;
             let distancePerFrame = 1;
             currenTime=Date.now();
-            for(let i =1;i<frameNumber;i++)
+            for(let i =0;i<frameNumber;i++)
+            {
+                
+                let img = new Image();
+                if(i<10)
+                img.src = "FinalAssets/AboutME3/EN1000"+i+".jpg";
+                else  if(i<100)
+                img.src = "FinalAssets/AboutME3/EN100"+i+".jpg";
+                else  if(i<1000)
+                img.src = "FinalAssets/AboutME3/EN10"+i+".jpg";
+                
+                imagelist.push(img);
+            }
+            imagelist[frameNumber-5].onload =function(){
+
+                document.getElementById("loader").style.visibility="hidden";
+                document.getElementById("loader").style.height = 0+'px';
+                document.getElementById("page").style.visibility="visible";
+                
+            }
+
+
+            for(let i =0;i<frameNumber;i++)
             {
                 
                 let img = new Image();
@@ -24,7 +46,7 @@ var imageDoc = document.getElementById("ig");
                 else  if(i<1000)
                 img.src = "FinalAssets/AboutME2/EN10"+i+".jpg";
                 
-                imagelist.push(img);
+                imagelist[i] = img;
             }
             dive.style.height = requiredHeight+'px';
             dive.append(imagelist[0]);
