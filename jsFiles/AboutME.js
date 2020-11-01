@@ -70,7 +70,7 @@ var imageDoc = document.getElementById("ig");
 
                 imagelist[k-1].onload=function()
                 {
-                    console.log('loaded '+k-1);
+                    console.log('loaded '+ (k-1));
                     iq();
                 };
             }
