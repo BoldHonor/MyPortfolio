@@ -16,7 +16,11 @@ body{
     align-items: center;
 }
 
-
+#loader{
+    color: white;
+    position: relative;
+    z-index: 2;
+}
 
 #her img {
     height: auto;

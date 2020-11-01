@@ -6,6 +6,10 @@
     </head>
 
     <body >
+       
+        <div id="loader"><h1>loading</h1></div>
+     <div id="page">
+       
     <!--     NAVBAR               ------------- -->
        <section class="navBar" id="header">
            <div>
@@ -112,6 +116,26 @@
     <div class="footer">
         <a href="#header">Go to The top</a>
     </div>
+</div>
+
+
+<script>
+    document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'complete') {
+            document.getElementById("loader").style.visibility="hidden";
+            document.getElementById("loader").style.height = 0+'px';
+            document.getElementById("page").style.visibility="visible";
+            
+            console.log('loaded');
+
+            }
+            else{
+                document.getElementById("page").style.visibility="hidden";
+            
+            }
+            }
+</script>
     </body>
 
 
