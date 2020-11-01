@@ -32,7 +32,7 @@ var imageDoc = document.getElementById("ig");
                 document.getElementById("loader").style.visibility="hidden";
                 document.getElementById("loader").style.height = 0+'px';
                 document.getElementById("page").style.visibility="visible";
-                if(window.innerWidth>(600+'px'))
+                if(window.innerWidth>(600))
                 iq();
             }
 
@@ -57,6 +57,7 @@ var imageDoc = document.getElementById("ig");
             distancePerFrame = (maxScrollHeight+15)/frameNumber;
             function iq()
             {
+                
                 if(k==frameNumber)return;
                 var source='';
                 if(k<10)
@@ -80,6 +81,10 @@ var imageDoc = document.getElementById("ig");
 
             function play()
             {
+                if(window.innerWidth>(600))
+                iq();
+                
+                
                 if(maxScrollHeight< body.scrollHeight - window.innerHeight) {
                     maxScrollHeight = body.scrollHeight - window.innerHeight
                     distancePerFrame = (maxScrollHeight+15)/frameNumber
