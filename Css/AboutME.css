@@ -21,7 +21,11 @@ body{
     position: relative;
     z-index: 2;
 }
-
+#her{
+    align-content: center;
+    align-items: center;
+    height: 100%;
+}
 #her img {
     height: auto;
     width: 100%;
@@ -31,6 +35,25 @@ body{
     left: 0%;
 }
 
+@media only screen and (orientation: portrait){
+    #her{
+        overflow: hidden;
+        align-items: center;
+        align-content: center;
+        
+
+    }
+    #her img {
+        height: 150vw;
+        width: auto;
+        position: fixed;
+        z-index: 1;
+        top: 0%;
+        
+        margin-left: -80vw;
+
+    }
+}
 
 .navBar{
     z-index: 2;
@@ -132,7 +155,7 @@ body{
 #AboutMe p {
     
     font-family: 'Roboto';
-    font-size: 20px;
+    font-size: 1.4vw;
     
 }
 .imageInSection{
@@ -154,7 +177,7 @@ body{
 .Floater p{
     color: rgb(0, 0, 0);
     font-family: 'Roboto';
-    font-size: 20px;
+    font-size: 1.4vw;
     padding: 20px;
     font-weight: bold;
     
@@ -203,6 +226,6 @@ body{
     text-decoration: none;
     color: white;
     font-family: 'Quicksand';
-    font-size: small;
+    font-size: 1vw;
     
 }
