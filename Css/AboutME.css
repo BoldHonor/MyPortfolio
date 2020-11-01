@@ -44,13 +44,13 @@ body{
 
     }
     #her img {
-        height: 150vw;
+        height: 180vw;
         width: auto;
         position: fixed;
         z-index: 1;
         top: 0%;
         
-        margin-left: -80vw;
+        margin-left: -110vw;
 
     }
 }
