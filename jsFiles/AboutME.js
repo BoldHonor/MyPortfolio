@@ -12,6 +12,7 @@ var imageDoc = document.getElementById("ig");
             var body  = document.getElementsByTagName("body")[0];
             let maxScrollHeight = 1;
             let distancePerFrame = 1;
+            var k=0;
             currenTime=Date.now();
             for(let i =0;i<frameNumber;i++)
             {
@@ -34,7 +35,7 @@ var imageDoc = document.getElementById("ig");
                 
             }
 
-
+            /*
             for(let i =0;i<frameNumber;i++)
             {
                 
@@ -48,10 +49,33 @@ var imageDoc = document.getElementById("ig");
                 
                 imagelist[i] = img;
             }
+            */
             dive.style.height = requiredHeight+'px';
             dive.append(imagelist[0]);
             maxScrollHeight = body.scrollHeight - window.innerHeight;
             distancePerFrame = (maxScrollHeight+15)/frameNumber;
+            function iq()
+            {
+                if(k==frameNumber)return;
+                var source='';
+                if(k<10)
+                source = "FinalAssets/AboutME2/EN1000"+k+".jpg";
+                else  if(k<100)
+                source = "FinalAssets/AboutME2/EN100"+k+".jpg";
+                else  if(k<1000)
+                source= "FinalAssets/AboutME2/EN10"+k+".jpg";
+                
+                imagelist[k].src = source;
+                k++;
+
+                imagelist[k-1].onload=function()
+                {
+                    console.log('loaded '+k-1);
+                    setTimeout(iq,1000);
+                };
+            }
+            iq();
+
             
             function play()
             {
