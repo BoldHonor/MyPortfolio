@@ -32,7 +32,7 @@ var imageDoc = document.getElementById("ig");
                 document.getElementById("loader").style.visibility="hidden";
                 document.getElementById("loader").style.height = 0+'px';
                 document.getElementById("page").style.visibility="visible";
-                
+                iq();
             }
 
             /*
@@ -74,7 +74,7 @@ var imageDoc = document.getElementById("ig");
                     iq();
                 };
             }
-            iq();
+            
 
 
             function play()
