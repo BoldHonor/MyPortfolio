@@ -31,6 +31,8 @@ var imageDoc = document.getElementById("ig");
 
                 document.getElementById("loader").style.visibility="hidden";
                 document.getElementById("loader").style.height = 0+'px';
+                document.getElementById("loader").style.display='none';
+                document.getElementById("page").style.display="block";
                 document.getElementById("page").style.visibility="visible";
                 if(window.innerWidth>(600))
                 iq();

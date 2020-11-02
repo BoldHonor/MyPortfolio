@@ -8,7 +8,11 @@
 
     <body >
        
-        <div id="loader"><h1>loading</h1></div>
+        <div id="loader">
+
+            <img src="FinalAssets/Loader/loader1.gif">
+        </div>
+        
      <div id="page">
        
     <!--     NAVBAR               ------------- -->
@@ -133,12 +137,14 @@
             document.getElementById("loader").style.visibility="hidden";
             document.getElementById("loader").style.height = 0+'px';
             document.getElementById("page").style.visibility="visible";
+            document.getElementById("page").style.display="block";
             
             console.log('loaded');
 
             }
         else{
                 document.getElementById("page").style.visibility="hidden";
+                document.getElementById("page").style.display="none";
 
             }}
             
