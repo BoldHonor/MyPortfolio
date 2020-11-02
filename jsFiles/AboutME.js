@@ -6,7 +6,7 @@ var imageDoc = document.getElementById("ig");
             let totalSpeed=0;
             let deltaTime=0;
             let currenTime=0;
-            var requiredHeight = 550;
+            var requiredHeight = 1000;
             var frameNumber = 150;
             var threshold = 0.2;
             var body  = document.getElementsByTagName("body")[0];
@@ -51,7 +51,7 @@ var imageDoc = document.getElementById("ig");
                 imagelist[i] = img;
             }
             */
-            dive.style.height = requiredHeight+'px';
+            body.style.height = requiredHeight+'px';
             dive.append(imagelist[0]);
             maxScrollHeight = body.scrollHeight - window.innerHeight;
             distancePerFrame = (maxScrollHeight+15)/frameNumber;
@@ -81,10 +81,9 @@ var imageDoc = document.getElementById("ig");
 
             function play()
             {
-                
-                
-                
-                if(maxScrollHeight< body.scrollHeight - window.innerHeight) {
+                console.log(window.pageYOffset);
+                console.log(maxScrollHeight);
+                if(maxScrollHeight!= body.scrollHeight - window.innerHeight) {
                     maxScrollHeight = body.scrollHeight - window.innerHeight
                     distancePerFrame = (maxScrollHeight+15)/frameNumber
                 }

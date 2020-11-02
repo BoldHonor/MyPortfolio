@@ -27,33 +27,14 @@ body{
     height: 100%;
 }
 #her img {
-    height: auto;
-    width: 100%;
+    height: 100vh;
+    width: 100%;     
     position: fixed;
     z-index: 1;
     top: 0%;
     left: 0%;
 }
 
-@media only screen and (max-width:600px){
-    #her{
-        overflow: hidden;
-        align-items: center;
-        align-content: center;
-        
-
-    }
-    #her img {
-        height: 180vw;
-        width: auto;
-        position: fixed;
-        z-index: 1;
-        top: 0%;
-        
-        margin-left: -110vw;
-
-    }
-}
 
 .navBar{
     z-index: 2;
@@ -155,7 +136,7 @@ body{
 #AboutMe p {
     
     font-family: 'Roboto';
-    font-size: 1.4vw;
+    
     
 }
 .imageInSection{
@@ -178,7 +159,7 @@ body{
     color: rgb(0, 0, 0);
     font-family: 'Roboto';
     font-size: 1.4vw;
-    padding: 20px;
+    padding: 50px;
     font-weight: bold;
     
     
@@ -228,4 +209,68 @@ body{
     font-family: 'Quicksand';
     font-size: 1vw;
     
+}
+
+
+
+@media only screen and (max-width:600px){
+    .navBar li{
+        display:block;
+    }
+    #her{
+        overflow: hidden;
+        align-items: center;
+        align-content: center;
+        
+
+    }
+    #her img {
+        height: 180vw;
+        width: auto;
+        position: fixed;
+        z-index: 1;
+        top: 0%;
+        
+        margin-left: -110vw;
+
+    }
+    #mypics
+    {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 600px;
+    padding-top: 40px;
+    margin: auto;
+    }
+
+    .wrapper{
+        display: block;
+        align-items: center;
+        align-content: center;
+        padding-left: 50px;
+    }
+
+    .slider{
+        max-width: 100%;
+        height:auto;
+        margin: auto;
+    }
+    .slider img{
+        filter: opacity(90%);
+       
+        clip-path: circle(40%);
+    }
+
+    .Floater{
+        max-width: 100%;
+    }
+    .Floater p{
+        color: rgb(0, 0, 0);
+        font-family: 'Roboto';
+        font-size: 4vw;
+        padding: 20px;
+        font-weight: bold;
+        
+        
+    }
 }
