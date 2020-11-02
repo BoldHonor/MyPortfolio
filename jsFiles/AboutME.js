@@ -51,7 +51,7 @@ var imageDoc = document.getElementById("ig");
                 imagelist[i] = img;
             }
             */
-            body.style.height = requiredHeight+'px';
+            //body.style.height = requiredHeight+'px';
             dive.append(imagelist[0]);
             maxScrollHeight = body.scrollHeight - window.innerHeight;
             distancePerFrame = (maxScrollHeight+15)/frameNumber;
@@ -81,8 +81,7 @@ var imageDoc = document.getElementById("ig");
 
             function play()
             {
-                console.log(window.pageYOffset);
-                console.log(maxScrollHeight);
+                
                 if(maxScrollHeight!= body.scrollHeight - window.innerHeight) {
                     maxScrollHeight = body.scrollHeight - window.innerHeight
                     distancePerFrame = (maxScrollHeight+15)/frameNumber
