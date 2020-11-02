@@ -194,6 +194,11 @@ body{
         
         animation: changeColor 0.5s ease-in  forwards;  
 }
+.hireme div:active  
+{
+        
+    background-color: rgba(99, 247, 54, 0.918);  
+}
 
 @keyframes changeColor{
     100%{

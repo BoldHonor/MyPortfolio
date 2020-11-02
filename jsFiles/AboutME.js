@@ -34,6 +34,8 @@ var imageDoc = document.getElementById("ig");
                 document.getElementById("page").style.visibility="visible";
                 if(window.innerWidth>(600))
                 iq();
+                else
+                frameSpeed++;
             }
 
             /*
