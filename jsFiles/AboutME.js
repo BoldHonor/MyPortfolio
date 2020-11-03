@@ -27,6 +27,7 @@ var imageDoc = document.getElementById("ig");
                 
                 imagelist.push(img);
             }
+            
             imagelist[frameNumber-5].onload =function(){
 
                 document.getElementById("loader").style.visibility="hidden";
