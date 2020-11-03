@@ -249,14 +249,7 @@ body{
     text-decoration: none;  
     width: 100px;
 }
-#loader video{
-    margin-left: auto;
-    margin-right: auto;
-    height: 50vw;
-    width: 50vw;
-    border-radius: 50%;
-    display: block;
-}
+
 .nextPart .nextText
 {
     
@@ -294,6 +287,25 @@ body{
     }
     .navHR{
         width: 100%;
+    }
+    #loader{
+        text-align: center;
+    }
+    #loader video{
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+        width: auto;
+        border-radius: 0;
+        display: block;
+    }
+    #loader h1{
+        position: absolute;
+        bottom: 20%;
+        left: 40%;
+        
+        
+        
     }
     #her{
         overflow: hidden;
