@@ -38,6 +38,10 @@ var imageDoc = document.getElementById("ig");
                 document.getElementById("loader").style.display='none';
                 document.getElementById("page").style.display="block";
                 document.getElementById("page").style.visibility="visible";
+               
+            }
+            imagelist[frameNumber-1].onload =function{
+
                 if(window.innerWidth>(600))
                 iq();
                 else
