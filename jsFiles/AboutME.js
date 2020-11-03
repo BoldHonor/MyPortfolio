@@ -40,7 +40,7 @@ var imageDoc = document.getElementById("ig");
                 document.getElementById("page").style.visibility="visible";
                
             }
-            imagelist[frameNumber-1].onload =function{
+            imagelist[frameNumber-1].onload =function (){
 
                 if(window.innerWidth>(600))
                 iq();
