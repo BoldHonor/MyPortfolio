@@ -1,4 +1,5 @@
 var imageDoc = document.getElementById("ig");
+            
             var dive = document.getElementById("her");
             var imagelist = [];
             let currentFrame = 0;
@@ -28,7 +29,9 @@ var imageDoc = document.getElementById("ig");
                 imagelist.push(img);
             }
             
-            imagelist[frameNumber-5].onload =function(){
+            
+    
+            imagelist[frameNumber/2].onload =function(){
 
                 document.getElementById("loader").style.visibility="hidden";
                 document.getElementById("loader").style.height = 0+'px';
