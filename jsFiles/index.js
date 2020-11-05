@@ -1,4 +1,8 @@
-import * as THREE from "./three.module.js";
+import * as THREE from "./build/three.module.js";
+import { EffectComposer } from './examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './examples/jsm/postprocessing/UnrealBloomPass.js';
+
 
 
 var effectDiv = document.getElementById("sideScroll");
@@ -9,6 +13,7 @@ var camera ='';
 var scene ='';
 var renderer
 effectDiv.style.height = 500+'px';
+
 
 
   
@@ -46,19 +51,19 @@ const line = new THREE.LineSegments( wireframe,lineMaterial );
 scene.add(icoSphere);
 scene.add(line);
 const vertices = geometry.attributes.position.array;
-/*
+
 const renderScene = new RenderPass( scene, camera );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
 			bloomPass.threshold = 0.6;
-			bloomPass.strength = 0.16;
+			bloomPass.strength = 0.2;
       bloomPass.radius = 0.3;
 
 let composer;
       composer = new EffectComposer( renderer );
       composer.addPass( renderScene );
       composer.addPass( bloomPass );
-*/
+
 console.log(vertices);
 
 //LIGHT
@@ -78,8 +83,8 @@ scene.add( directionalLight);
    function animate() {
     icoSphere.rotation.y +=0.01;
     line.rotation.y+=0.01;
-    //composer.render();
-    renderer.render(scene, camera); 
+    composer.render();
+    //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
     
   }
