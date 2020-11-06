@@ -2,7 +2,7 @@ import * as THREE from "./build/three.module.js";
 import { EffectComposer } from './examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from './examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from './examples/jsm/postprocessing/UnrealBloomPass.js';
-
+import Stats from './examples/jsm/libs/stats.module.js'
 
 
 var effectDiv = document.getElementById("sideScroll");
@@ -15,7 +15,7 @@ var renderer
 effectDiv.style.height = 500+'px';
 var currentTIme=Date.now();
 var deltaTime =1;
-
+const PARTICLE_SIZE = 2
 
     window.addEventListener( 'resize', onWindowResize, false );
   
@@ -43,20 +43,24 @@ const geometry = new THREE.IcosahedronBufferGeometry(0.3,1);
 //const geometry = new THREE.BoxBufferGeometry(0.3,0.3,0.3);
 const material = new THREE.MeshLambertMaterial({color:'#F4AA20',emissiveIntensity :8 }); 
 const icoSphere= new THREE.Mesh( geometry, material );
-
 const wireframe = new THREE.WireframeGeometry( geometry );
-
-
 const lineMaterial = new THREE.LineBasicMaterial({color:'#FFFFFF',linewidth :1});
 const line = new THREE.LineSegments( wireframe,lineMaterial );
 
+var pos=  geometry.attributes.position.array;
+const particlesGeometry = new THREE.BufferGeometry();
+			particlesGeometry.setAttribute( 'position', new THREE.BufferAttribute( pos, 3 ) );
+      var particleMaterial = new THREE.PointsMaterial( { color: 0x888888,size:0.02 } );
 
-console.log(effectDiv.offsetWidth);
+
+var points = new THREE.Points(particlesGeometry, particleMaterial);
+icoSphere.add(points);
+//scene.add( points );
 scene.add(icoSphere);
 icoSphere.position.setX(-0.6);
 line.position.x=-0.6
 scene.add(line);
-const vertices = geometry.attributes.position.array;
+
 
 //BLOOM
 const renderScene = new RenderPass( scene, camera );
@@ -71,7 +75,7 @@ let composer;
       composer.addPass( renderScene );
       composer.addPass( bloomPass );
 
-console.log(vertices);
+//console.log(vertices);
 
 //LIGHT
 const light = new THREE.AmbientLight( '#F19518'); // soft white light
@@ -97,8 +101,8 @@ directionalLight.castShadow=true;
      
      if(icoSphere.rotation.y>360)
      icoSphere.rotation.y=0;
-    icoSphere.rotation.y +=0.01*deltaTime;
-    line.rotation.y+=0.01*deltaTime;
+    icoSphere.rotation.y +=0.05*deltaTime;
+    line.rotation.y+=0.05*deltaTime;
     composer.render();
     //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
@@ -111,6 +115,6 @@ directionalLight.castShadow=true;
     camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
     camera.updateProjectionMatrix();
 
-    renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );
+    renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
 
   }
