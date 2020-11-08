@@ -67,7 +67,7 @@ scene.add(line);
 var obj;
 const loader = new GLTFLoader();
 
-loader.load( '../FinalAssets/Models/scene.gltf', function ( gltf ) {
+loader.load( 'FinalAssets/Models/scene.gltf', function ( gltf ) {
 
   obj= gltf.scene.children[0];
   obj.scale.set(0.1,0.1,0.1);
