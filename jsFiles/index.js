@@ -2,7 +2,7 @@ import * as THREE from "./build/three.module.js";
 import { EffectComposer } from './examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from './examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from './examples/jsm/postprocessing/UnrealBloomPass.js';
-import Stats from './examples/jsm/libs/stats.module.js'
+import { GLTFLoader } from './examples/jsm/loaders/GLTFLoader.js'
 
 
 var effectDiv = document.getElementById("sideScroll");
@@ -11,7 +11,8 @@ var height= effectDiv.clientHeight;
 var width = effectDiv.clientWidth;
 var camera ='';
 var scene ='';
-var renderer
+var renderer;
+var obj;
 effectDiv.style.height = 500+'px';
 var currentTIme=Date.now();
 var deltaTime =1;
@@ -61,12 +62,28 @@ icoSphere.position.setX(-0.6);
 line.position.x=-0.6
 scene.add(line);
 
+//Loader
+
+var obj;
+const loader = new GLTFLoader();
+
+loader.load( '../FinalAssets/Models/scene.gltf', function ( gltf ) {
+
+  obj= gltf.scene.children[0];
+  obj.scale.set(0.1,0.1,0.1);
+	scene.add(obj );
+
+}, undefined, function ( error ) {
+
+	console.error( error );
+
+} );
 
 //BLOOM
 const renderScene = new RenderPass( scene, camera );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth, effectDiv.clientHeight ), 1.5, 0.4, 0.85 );
-			bloomPass.threshold = 0.3;
+			bloomPass.threshold = 0.2;
 			bloomPass.strength = 0.5;
       bloomPass.radius = 0.6;
 
@@ -103,6 +120,8 @@ directionalLight.castShadow=true;
      icoSphere.rotation.y=0;
     icoSphere.rotation.y +=0.05*deltaTime;
     line.rotation.y+=0.05*deltaTime;
+    if(typeof obj !== "undefined")
+    obj.children[0].scale.set(0.1,0.1,0.1);
     composer.render();
     //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
