@@ -18,7 +18,25 @@ var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2
 
+//LISTENERS
     window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('wheel', function(event)
+{
+ if (event.deltaY < 0)
+ {
+  console.log(event.deltaY);
+  //document.getElementById('status').textContent= 'scrolling up';
+ }
+ else if (event.deltaY > 0)
+ {
+  console.log(event.deltaY);
+ // document.getElementById('status').textContent= 'scrolling down';
+ }
+});
+
+
+
+//init
   
     camera = new THREE.PerspectiveCamera(
         45,
@@ -57,21 +75,21 @@ const particlesGeometry = new THREE.BufferGeometry();
 var points = new THREE.Points(particlesGeometry, particleMaterial);
 icoSphere.add(points);
 //scene.add( points );
-scene.add(icoSphere);
+//scene.add(icoSphere);
 icoSphere.position.setX(-0.6);
 line.position.x=-0.6
-scene.add(line);
+//scene.add(line);
 
 //Loader
 
 var obj;
 const loader = new GLTFLoader();
 
-loader.load( 'FinalAssets/Models/scene.gltf', function ( gltf ) {
+loader.load( 'FinalAssets/Models/Earth.gltf', function ( gltf ) {
 
-  obj= gltf.scene.children[0];
-  obj.scale.set(0.1,0.1,0.1);
-	scene.add(obj );
+  obj = gltf.scene;
+  obj.scale.set(0.3,0.3,0.3);
+	scene.add(obj);
 
 }, undefined, function ( error ) {
 
@@ -85,7 +103,7 @@ const renderScene = new RenderPass( scene, camera );
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth, effectDiv.clientHeight ), 1.5, 0.4, 0.85 );
 			bloomPass.threshold = 0.2;
 			bloomPass.strength = 0.5;
-      bloomPass.radius = 0.6;
+      bloomPass.radius = 0.8;
 
 let composer;
       composer = new EffectComposer( renderer );
@@ -95,13 +113,13 @@ let composer;
 //console.log(vertices);
 
 //LIGHT
-const light = new THREE.AmbientLight( '#F19518'); // soft white light
-scene.add( light );
-const directionalLight = new THREE.DirectionalLight( '#D5F156', 0.3 );
+const light = new THREE.AmbientLight( '#25D6EC'); // soft white light
+  scene.add( light );
+const directionalLight = new THREE.DirectionalLight( '#FFFFFF', 0.03 );
 directionalLight.position.y=0.2;
 directionalLight.position.z=1;
 directionalLight.castShadow=true;
-//scene.add( directionalLight);
+scene.add( directionalLight);
 
 
 
@@ -121,7 +139,7 @@ directionalLight.castShadow=true;
     icoSphere.rotation.y +=0.05*deltaTime;
     line.rotation.y+=0.05*deltaTime;
     if(typeof obj !== "undefined")
-    obj.children[0].scale.set(0.1,0.1,0.1);
+    obj.rotation.y+=0.05*deltaTime;
     composer.render();
     //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
