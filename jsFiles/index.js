@@ -6,14 +6,15 @@ import { GLTFLoader } from './examples/jsm/loaders/GLTFLoader.js'
 
 
 var effectDiv = document.getElementById("sideScroll");
-effectDiv.innerHTML='hi boi';
 var height= effectDiv.clientHeight;
 var width = effectDiv.clientWidth;
 var camera ='';
 var scene ='';
 var renderer;
 var obj;
-effectDiv.style.height = 500+'px';
+effectDiv.style.height = '100%';
+effectDiv.style.width='100%';
+effectDiv.style.position='fixed';
 var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2
@@ -41,7 +42,7 @@ const PARTICLE_SIZE = 2
     camera = new THREE.PerspectiveCamera(
         45,
         effectDiv.clientWidth / effectDiv.clientHeight,
-        0.1,
+        0.01,
         1000
       );
       //camera = new THREE.OrthographicCamera( effectDiv.clientWidth / - 2, effectDiv.clientWidth / 2, effectDiv.clientHeight / 2,effectDiv.clientHeight / - 2, 0.01, 1000 );
@@ -49,7 +50,8 @@ const PARTICLE_SIZE = 2
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     effectDiv.appendChild( renderer.domElement );
-    camera.position.z =1;
+    camera.position.set(0.141,1.911,5.873);
+    
     renderer.setClearColor('000000');
     scene = new THREE.Scene();
     
@@ -89,7 +91,8 @@ loader.load( 'FinalAssets/Models/Earth.gltf', function ( gltf ) {
 
   obj = gltf.scene;
   obj.scale.set(0.3,0.3,0.3);
-	scene.add(obj);
+  
+	//scene.add(obj);
 
 }, undefined, function ( error ) {
 
@@ -97,12 +100,53 @@ loader.load( 'FinalAssets/Models/Earth.gltf', function ( gltf ) {
 
 } );
 
+
+
+
+const loa = new THREE.ObjectLoader();
+
+loa.load(
+	// resource URL
+	"FinalAssets/Models/scene.json",
+
+	// onLoad callback
+	// Here the loaded data is assumed to be an object
+	function ( obd ) {
+    // Add the loaded object to the scene
+    obj = obd;
+    //obj.scale.set(0.1,0.1,0.1);
+    //obj.position.x=-0.5;
+		scene.add( obj );
+	},
+
+	// onProgress callback
+	function ( xhr ) {
+		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+	},
+
+	// onError callback
+	function ( err ) {
+		console.error( 'An error happened' );
+	}
+);
+
+
+// Alternatively, to parse a previously loaded JSON structure
+//const object = loader.parse( a_json_object );
+
+//scene.add( object );
+
+
+
+
+
+
 //BLOOM
 const renderScene = new RenderPass( scene, camera );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth, effectDiv.clientHeight ), 1.5, 0.4, 0.85 );
-			bloomPass.threshold = 0.2;
-			bloomPass.strength = 0.5;
+			bloomPass.threshold = 0.8;
+			bloomPass.strength = 0.4;
       bloomPass.radius = 0.8;
 
 let composer;
@@ -114,12 +158,12 @@ let composer;
 
 //LIGHT
 const light = new THREE.AmbientLight( '#25D6EC'); // soft white light
-  scene.add( light );
+//  scene.add( light );
 const directionalLight = new THREE.DirectionalLight( '#FFFFFF', 0.03 );
 directionalLight.position.y=0.2;
 directionalLight.position.z=1;
 directionalLight.castShadow=true;
-scene.add( directionalLight);
+//scene.add( directionalLight);
 
 
 
@@ -139,7 +183,7 @@ scene.add( directionalLight);
     icoSphere.rotation.y +=0.05*deltaTime;
     line.rotation.y+=0.05*deltaTime;
     if(typeof obj !== "undefined")
-    obj.rotation.y+=0.05*deltaTime;
+    obj.children[0].rotation.y+=0.05*deltaTime;
     composer.render();
     //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
