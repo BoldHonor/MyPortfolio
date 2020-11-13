@@ -3,6 +3,8 @@ import { EffectComposer } from './examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from './examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from './examples/jsm/postprocessing/UnrealBloomPass.js';
 import { GLTFLoader } from './examples/jsm/loaders/GLTFLoader.js'
+import { OrbitControls } from './examples/jsm/controls/OrbitControls.js';
+import { FirstPersonControls } from './examples/jsm/controls/FirstPersonControls.js';
 
 
 var effectDiv = document.getElementById("sideScroll");
@@ -17,7 +19,8 @@ effectDiv.style.width='100%';
 effectDiv.style.position='fixed';
 var currentTIme=Date.now();
 var deltaTime =1;
-const PARTICLE_SIZE = 2
+const PARTICLE_SIZE = 2;
+var abo ;
 
 //LISTENERS
     window.addEventListener( 'resize', onWindowResize, false );
@@ -40,21 +43,23 @@ const PARTICLE_SIZE = 2
 //init
   
     camera = new THREE.PerspectiveCamera(
-        45,
+        40,
         effectDiv.clientWidth / effectDiv.clientHeight,
         0.01,
-        1000
+        300
       );
       //camera = new THREE.OrthographicCamera( effectDiv.clientWidth / - 2, effectDiv.clientWidth / 2, effectDiv.clientHeight / 2,effectDiv.clientHeight / - 2, 0.01, 1000 );
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     effectDiv.appendChild( renderer.domElement );
-    camera.position.set(0.141,1.911,5.873);
+    camera.position.set(-1,7.911,5.873);
     
-    renderer.setClearColor('000000');
+    renderer.setClearColor('#FFFFFF');
     scene = new THREE.Scene();
-    
+    const clock = new THREE.Clock();
+    //scene.background = new THREE.Color( '000000' );
+    scene.fog =   new THREE.Fog('#000000 ',0.03,300);
   
  
 
@@ -107,7 +112,7 @@ const loa = new THREE.ObjectLoader();
 
 loa.load(
 	// resource URL
-	"FinalAssets/Models/scene.json",
+	"FinalAssets/Models/scene1.json",
 
 	// onLoad callback
 	// Here the loaded data is assumed to be an object
@@ -116,7 +121,8 @@ loa.load(
     obj = obd;
     //obj.scale.set(0.1,0.1,0.1);
     //obj.position.x=-0.5;
-		scene.add( obj );
+    scene.add( obj );
+    abo= obj.getObjectByName('About me');
 	},
 
 	// onProgress callback
@@ -136,8 +142,11 @@ loa.load(
 
 //scene.add( object );
 
-
-
+//LOADED OBJECTS 
+if(typeof obj !== "undefined"){
+var abo = obj.getObjectByName('About me');
+console.log(abo);
+}
 
 
 
@@ -145,9 +154,9 @@ loa.load(
 const renderScene = new RenderPass( scene, camera );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth, effectDiv.clientHeight ), 1.5, 0.4, 0.85 );
-			bloomPass.threshold = 0.8;
-			bloomPass.strength = 0.4;
-      bloomPass.radius = 0.8;
+			bloomPass.threshold = 0.5;
+			bloomPass.strength = 0.5;
+      bloomPass.radius = 0.4;
 
 let composer;
       composer = new EffectComposer( renderer );
@@ -166,7 +175,14 @@ directionalLight.castShadow=true;
 //scene.add( directionalLight);
 
 
+//CONTROLS
 
+const controls =  new FirstPersonControls( camera, renderer.domElement );
+  controls.movementSpeed = 20;
+  controls.lookSpeed = 0.06;
+  controls.constrainVertical = true;
+  controls.verticalMax  = 1.9;
+  controls.verticalMin =1.5;
 
 
 
@@ -182,9 +198,20 @@ directionalLight.castShadow=true;
      icoSphere.rotation.y=0;
     icoSphere.rotation.y +=0.05*deltaTime;
     line.rotation.y+=0.05*deltaTime;
-    if(typeof obj !== "undefined")
-    obj.children[0].rotation.y+=0.05*deltaTime;
+    //if(typeof obj !== "undefined")
+    //obj.children[0].rotation.y+=0.05*deltaTime;
+
+    if(typeof abo!== "undefined"){
+      
+      //console.log(abo);
+      //abo.rotation.z+=0.03;
+      }
+
+
+
+    controls.update( clock.getDelta() );
     composer.render();
+    
     //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
     
@@ -195,7 +222,7 @@ directionalLight.castShadow=true;
 
     camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
     camera.updateProjectionMatrix();
-
+    
     renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
-
+    controls.handleResize();
   }
