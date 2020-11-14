@@ -21,20 +21,17 @@ var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2;
 var abo ;
+var onHover = document.getElementsByClassName('onHover');
+var page= document.getElementById('page');
+var loaderScreen = document.getElementById('loader');
+
+page.style.visibility='hidden';
+
+
 
 //LISTENERS
     window.addEventListener( 'resize', onWindowResize, false );
-    window.addEventListener("mousemove", function(event)
-{
- 
-  console.log(window.innerWidth);
-  //document.getElementById('status').textContent= 'scrolling up';
- 
-
-  console.log(event.clientX);
- // document.getElementById('status').textContent= 'scrolling down';
-
-});
+   
 
 
 
@@ -122,6 +119,8 @@ loa.load(
     //obj.position.x=-0.5;
     scene.add( obj );
     abo= obj.getObjectByName('About me');
+    page.style.visibility='visible';
+    loaderScreen.style.display='none';
 	},
 
 	// onProgress callback
@@ -187,6 +186,35 @@ const controls =  new FirstPersonControls( camera, renderer.domElement );
   controls.verticalMax  = 1.9;
   controls.verticalMin =1.5;
   controls.mouseDragOn =false;  
+  controls.activeLook =true;
+
+
+
+ 
+
+
+
+  function onHoverIn ()
+  {
+    controls.activeLook =false;
+    console.log('in');
+  }
+
+  function onHoverOut()
+  {
+    
+    console.log('out');
+    controls.activeLook =true;
+  }
+
+  var hoverElements = document.getElementsByClassName('onHover');
+  console.log(hoverElements); 
+
+  for (let i = 0; i < hoverElements.length; i++) {
+    hoverElements[i].addEventListener('mouseout',onHoverOut);
+    hoverElements[i].addEventListener('mouseover',onHoverIn);
+  }
+
 
 
 
