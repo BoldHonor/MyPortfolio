@@ -5,7 +5,7 @@ import { UnrealBloomPass } from './examples/jsm/postprocessing/UnrealBloomPass.j
 import { GLTFLoader } from './examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from './examples/jsm/controls/OrbitControls.js';
 import { FirstPersonControls } from './examples/jsm/controls/FirstPersonControls.js';
-
+import { BokehPass } from './examples/jsm/postprocessing/BokehPass.js';
 
 var effectDiv = document.getElementById("sideScroll");
 var height= effectDiv.clientHeight;
@@ -24,18 +24,16 @@ var abo ;
 
 //LISTENERS
     window.addEventListener( 'resize', onWindowResize, false );
-    window.addEventListener('wheel', function(event)
+    window.addEventListener("mousemove", function(event)
 {
- if (event.deltaY < 0)
- {
-  console.log(event.deltaY);
+ 
+  console.log(window.innerWidth);
   //document.getElementById('status').textContent= 'scrolling up';
- }
- else if (event.deltaY > 0)
- {
-  console.log(event.deltaY);
+ 
+
+  console.log(event.clientX);
  // document.getElementById('status').textContent= 'scrolling down';
- }
+
 });
 
 
@@ -159,10 +157,14 @@ const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth,
 			bloomPass.strength = 0.3;
       bloomPass.radius = 0.4;
 
+
+
+
 let composer;
       composer = new EffectComposer( renderer );
       composer.addPass( renderScene );
       composer.addPass( bloomPass );
+      
 
 //console.log(vertices);
 
@@ -180,10 +182,11 @@ directionalLight.castShadow=true;
 
 const controls =  new FirstPersonControls( camera, renderer.domElement );
   controls.movementSpeed = 12;
-  controls.lookSpeed = 0.1;
+  controls.lookSpeed = 0.06;
   controls.constrainVertical = true;
   controls.verticalMax  = 1.9;
   controls.verticalMin =1.5;
+  controls.mouseDragOn =false;  
 
 
 

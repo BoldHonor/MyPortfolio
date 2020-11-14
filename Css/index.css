@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
 
 #sideScroller{
     
@@ -10,6 +17,59 @@
     z-index: 1;
     top: 0;
     left: 0;
+}
+
+
+
+
+.navBar{
+    z-index: 2;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+
+.navBar div{
+    
+    
+    text-align: center;
+}
+
+.navBar ul {
+    margin: 0px;
+}
+.navBar li{
+    display: inline-block;
+    padding: 2%;
+    margin: 0px 0px 0px 0px;
+    font-family: 'Roboto';
+    border-radius: 5%;
+   
+
+}
+
+.navBar li:hover{
+    background-color: rgba(218, 210, 210, 0.705);
+
+}
+
+.navBar li a{
+    
+    text-decoration: none;
+    color: rgb(236, 229, 229);
+   
+
+}
+
+.navHR{
+    width: 100%;
+    color: white;
+    z-index: 2;
+    position: absolute;
+    height: 0.1px;
+    margin: 0;
 }
 
 
