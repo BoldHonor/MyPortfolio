@@ -56,11 +56,11 @@ var abo ;
     camera.position.set(128,7.911,-36.6);
     camera.rotation.set(10,-80,-10);
     
-    renderer.setClearColor('#FFFFFF');
+    renderer.setClearColor('#787676');
     scene = new THREE.Scene();
     const clock = new THREE.Clock();
     //scene.background = new THREE.Color( '000000' );
-    scene.fog =   new THREE.Fog('#000000 ',0.3,270);
+    scene.fog =   new THREE.Fog(0x787676,0.3,190);
   
  
 
@@ -179,8 +179,8 @@ directionalLight.castShadow=true;
 //CONTROLS
 
 const controls =  new FirstPersonControls( camera, renderer.domElement );
-  controls.movementSpeed = 20;
-  controls.lookSpeed = 0.06;
+  controls.movementSpeed = 12;
+  controls.lookSpeed = 0.1;
   controls.constrainVertical = true;
   controls.verticalMax  = 1.9;
   controls.verticalMin =1.5;
