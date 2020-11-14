@@ -53,13 +53,14 @@ var abo ;
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     effectDiv.appendChild( renderer.domElement );
-    camera.position.set(-1,7.911,5.873);
+    camera.position.set(128,7.911,-36.6);
+    camera.rotation.set(10,-80,-10);
     
     renderer.setClearColor('#FFFFFF');
     scene = new THREE.Scene();
     const clock = new THREE.Clock();
     //scene.background = new THREE.Color( '000000' );
-    scene.fog =   new THREE.Fog('#000000 ',0.03,300);
+    scene.fog =   new THREE.Fog('#000000 ',0.3,270);
   
  
 
@@ -155,7 +156,7 @@ const renderScene = new RenderPass( scene, camera );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth, effectDiv.clientHeight ), 1.5, 0.4, 0.85 );
 			bloomPass.threshold = 0.5;
-			bloomPass.strength = 0.5;
+			bloomPass.strength = 0.3;
       bloomPass.radius = 0.4;
 
 let composer;
