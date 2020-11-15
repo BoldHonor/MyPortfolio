@@ -29,6 +29,11 @@ var imageDoc = document.getElementById("ig");
             }
             
             imagelist[0].onload =function(){ console.log('loaded0');}
+            imagelist[1].onload =function(){ console.log('loaded1');}
+            imagelist[2].onload =function(){ console.log('loaded2');}
+            imagelist[3].onload =function(){ console.log('loaded3');}
+            imagelist[4].onload =function(){ console.log('loaded4');}
+
             imagelist[15].onload =function(){ console.log('loaded15');}
             imagelist[100].onload =function(){ console.log('loaded100');}
 
