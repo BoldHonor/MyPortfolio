@@ -29,7 +29,8 @@ var imageDoc = document.getElementById("ig");
                 imagelist.push(img);
             }
             
-            
+            imagelist[3].onload =function(){ console.log('loaded3');}
+
     
             imagelist[frameNumber/2].onload =function(){
 
