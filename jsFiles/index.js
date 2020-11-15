@@ -107,7 +107,6 @@ loader.load( 'FinalAssets/Models/Earth.gltf', function ( gltf ) {
 
 
 
-
 const loa = new THREE.ObjectLoader();
 
 loa.load(
@@ -137,6 +136,11 @@ loa.load(
 		console.error( 'An error happened' );
 	}
 );
+
+document.getElementById('AboutME').addEventListener('click',function(event){
+  obj.dispose();
+  window.location.replace("./AboutME.html");
+});
 
 
 // Alternatively, to parse a previously loaded JSON structure
