@@ -118,6 +118,7 @@ loa.load(
 	function ( obd ) {
     // Add the loaded object to the scene
     obj = obd;
+    obd.dispose();
     //obj.scale.set(0.1,0.1,0.1);
     //obj.position.x=-0.5;
     scene.add( obj );
@@ -138,7 +139,8 @@ loa.load(
 );
 
 document.getElementById('AboutME').addEventListener('click',function(event){
-  obj.dispose();
+  
+  obj.remove(); 
   window.location.replace("./AboutME.html");
 });
 
