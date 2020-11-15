@@ -30,6 +30,8 @@ var imageDoc = document.getElementById("ig");
             }
             
             imagelist[3].onload =function(){ console.log('loaded3');}
+            imagelist[15].onload =function(){ console.log('loaded15');}
+            imagelist[100].onload =function(){ console.log('loaded100');}
 
     
             imagelist[frameNumber/2].onload =function(){
