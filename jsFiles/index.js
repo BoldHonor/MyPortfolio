@@ -141,7 +141,7 @@ loa.load(
 document.getElementById('AboutME').addEventListener('click',function(event){
   
   obj.remove(); 
-  window.location.replace("./AboutME.html");
+  window.location="./AboutME.html";
 });
 
 
