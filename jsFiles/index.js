@@ -190,7 +190,7 @@ const controls =  new FirstPersonControls( camera, renderer.domElement );
   controls.verticalMax  = 1.9;
   controls.verticalMin =1.5;
   controls.mouseDragOn =false;  
-  controls.activeLook =false;
+  controls.activeLook =true;
 
 
 
