@@ -25,8 +25,6 @@ var imageDoc = document.getElementById("ig");
                 img.src = "FinalAssets/AboutME3/EN100"+i+".jpg";
                 else  if(i<1000)
                 img.src = "FinalAssets/AboutME3/EN10"+i+".jpg";
-                dive.removeChild(dive.firstChild);
-                dive.append(img);
                 imagelist.push(img);
             }
             
