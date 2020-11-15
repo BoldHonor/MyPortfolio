@@ -86,3 +86,56 @@ body{
     position: relative;
     z-index: 2;
 }
+
+.welcome{
+    position:absolute;
+    z-index: 2;
+    right: 10%;
+    margin-top: 5%;
+    display: inline-block;
+    text-align: center;
+}
+.welcome div {
+    background-color: rgba(255, 255, 255, 0.87);
+    color: rgb(211, 73, 9);
+  mix-blend-mode: difference;
+  font-family: Roboto;
+  padding: 30px;
+}
+.welcome h2{
+    
+    text-align: center;
+}
+.welcome p {
+    text-align: center;
+    font-weight: 300;
+    
+}
+.welcome Button
+{
+    height: 50px;
+    width :200px;
+    background-color:rgb(231, 79, 19);
+    border: none;
+    font-family: Quicksand;
+    font-weight: bolder;
+    color: white;
+    align-self: center;
+    display: inline-block;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+#instruction
+{
+    position: absolute;
+    bottom: 0%;
+    z-index: 2;
+    height: 40%;
+    
+}
+#instruction img{
+    max-height: 100%;
+    width: auto;
+    
+}

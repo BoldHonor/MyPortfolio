@@ -25,8 +25,12 @@ var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
 
-page.style.visibility='hidden';
+var Explore  = document.getElementById('explore');
 
+
+
+page.style.visibility='hidden';
+document.getElementById('instruction').style.visibility='hidden';
 
 
 //LISTENERS
@@ -180,17 +184,21 @@ directionalLight.castShadow=true;
 //CONTROLS
 
 const controls =  new FirstPersonControls( camera, renderer.domElement );
-  controls.movementSpeed = 12;
+  controls.movementSpeed = 0;
   controls.lookSpeed = 0.06;
   controls.constrainVertical = true;
   controls.verticalMax  = 1.9;
   controls.verticalMin =1.5;
   controls.mouseDragOn =false;  
-  controls.activeLook =true;
+  controls.activeLook =false;
 
 
 
- 
+  Explore.addEventListener('click',function(){
+      controls.movementSpeed=12;
+      document.getElementById('instruction').style.visibility='visible';
+      document.getElementById('welcome').style.display='none';
+  });
 
 
 
