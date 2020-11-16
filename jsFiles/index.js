@@ -57,13 +57,23 @@ document.getElementById('instruction').style.visibility='hidden';
 
 
 //init
-  
+  if(isPhone)
+  {
+    camera = new THREE.PerspectiveCamera(
+      40,
+      effectDiv.clientWidth / effectDiv.clientHeight,
+      0.01,
+      80
+    );
+  }
+  else{
     camera = new THREE.PerspectiveCamera(
         40,
         effectDiv.clientWidth / effectDiv.clientHeight,
         0.01,
         300
       );
+    }
       //camera = new THREE.OrthographicCamera( effectDiv.clientWidth / - 2, effectDiv.clientWidth / 2, effectDiv.clientHeight / 2,effectDiv.clientHeight / - 2, 0.01, 1000 );
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
