@@ -115,7 +115,7 @@ loa.load(
     obd.dispose();
     //obj.scale.set(0.1,0.1,0.1);
     //obj.position.x=-0.5;
-   // scene.add( obj );
+    scene.add( obj );
    
     AboutME = obj.getObjectByName('Plane029');
     Projects =obj.getObjectByName('Plane028');
@@ -174,7 +174,7 @@ let composer;
 
 //console.log(vertices);
 
-//LIGHT
+//LIGHT 
 
 
 //CONTROLS
