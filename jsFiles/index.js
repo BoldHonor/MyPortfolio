@@ -50,6 +50,7 @@ document.getElementById('instruction').style.visibility='hidden';
       //camera = new THREE.OrthographicCamera( effectDiv.clientWidth / - 2, effectDiv.clientWidth / 2, effectDiv.clientHeight / 2,effectDiv.clientHeight / - 2, 0.01, 1000 );
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
+    renderer.extensions.get( 'EXT_color_buffer_float' );
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     effectDiv.appendChild( renderer.domElement );
     camera.position.set(128,7.911,-36.6);
@@ -249,14 +250,17 @@ window.addEventListener('mousemove',function(event){
     switch(intersects[0].object.name)
     {
       case 'Plane029':
-        window.open( './AboutME.html','_blank');
+        //window.open( './AboutME.html','_blank');
+        window.location = './AboutME.html';
         console.log('ji');
         break;
       case 'Plane028':
-        window.open( './Projects.html','_blank');
+       // window.open( './Projects.html','_blank');
+       window.location = './Projects.html';
         break;
         case 'Plane030':
-          window.open('./Resume.html','_blank');
+         // window.open('./Resume.html','_blank');
+         window.location = './Resume.html';
           break;
 
     };}
