@@ -27,10 +27,22 @@ var loaderScreen = document.getElementById('loader');
 
 var Explore  = document.getElementById('explore');
 var isPhone = true;
-if(window.innerWidth>600)
-{
-  isPhone =false;
+isPhone= function detectMob() {
+  const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+  ];
+
+  return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+  });
 }
+console.log('is phone test'+isPhone);
 
 page.style.visibility='hidden';
 document.getElementById('instruction').style.visibility='hidden';
