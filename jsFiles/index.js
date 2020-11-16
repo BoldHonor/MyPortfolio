@@ -64,7 +64,7 @@ document.getElementById('instruction').style.visibility='hidden';
   
  
 
- 
+ /*
 //GEOMETRIES
 const geometry = new THREE.IcosahedronBufferGeometry(0.3,1);
 //const geometry = new THREE.BoxBufferGeometry(0.3,0.3,0.3);
@@ -87,24 +87,11 @@ icoSphere.add(points);
 icoSphere.position.setX(-0.6);
 line.position.x=-0.6
 //scene.add(line);
-
+*/
 //Loader
 
 var obj;
-const loader = new GLTFLoader();
 
-loader.load( 'FinalAssets/Models/Earth.gltf', function ( gltf ) {
-
-  obj = gltf.scene;
-  obj.scale.set(0.3,0.3,0.3);
-  
-	//scene.add(obj);
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
 
 
 
@@ -299,10 +286,6 @@ window.addEventListener('mousemove',function(event){
 
      }
      
-     if(icoSphere.rotation.y>360)
-     icoSphere.rotation.y=0;
-    icoSphere.rotation.y +=0.05*deltaTime;
-    line.rotation.y+=0.05*deltaTime;
     //if(typeof obj !== "undefined")
     //obj.children[0].rotation.y+=0.05*deltaTime;
 
