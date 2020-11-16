@@ -323,10 +323,6 @@ window.addEventListener('mousemove',function(event){
     camera.updateProjectionMatrix();
     
     renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
-    isPhone=false;
-    if(window.innerWidth<600)
-    {
-  isPhone =true;
-    }
+   
     controls.handleResize();
   }
