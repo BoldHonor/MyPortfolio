@@ -26,10 +26,10 @@ var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
 
 var Explore  = document.getElementById('explore');
-var isPhone = false;
-if(window.innerWidth<600)
+var isPhone = true;
+if(window.innerWidth>600)
 {
-  isPhone =true;
+  isPhone =false;
 }
 
 page.style.visibility='hidden';
