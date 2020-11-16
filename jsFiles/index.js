@@ -309,7 +309,7 @@ window.addEventListener('mousemove',function(event){
       renderer.render(scene, camera); 
     }
     else{
-     // composer.render();
+      composer.render();
     }
     
     
