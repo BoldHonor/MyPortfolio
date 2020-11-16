@@ -288,9 +288,9 @@ window.addEventListener('mousemove',function(event){
 
     controls.update( clock.getDelta() );
     
-    // composer.render();
+    composer.render();
     
-    renderer.render(scene, camera); 
+    //renderer.render(scene, camera); 
     requestAnimationFrame(animate);
     
   }
