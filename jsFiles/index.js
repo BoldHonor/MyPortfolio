@@ -310,7 +310,7 @@ window.addEventListener('mousemove',function(event){
 
 
     controls.update( clock.getDelta() );
-    if(typeof obj != 'undefined');
+    
     composer.render();
     
     //renderer.render(scene, camera); 
