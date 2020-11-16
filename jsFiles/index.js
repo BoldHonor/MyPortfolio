@@ -20,7 +20,7 @@ effectDiv.style.position='fixed';
 var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2;
-var abo ;
+
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
@@ -107,6 +107,12 @@ loader.load( 'FinalAssets/Models/Earth.gltf', function ( gltf ) {
 
 
 
+//JSON LOADER
+var AboutME;
+var Projects;
+var Resume;
+
+
 const loa = new THREE.ObjectLoader();
 
 loa.load(
@@ -122,7 +128,11 @@ loa.load(
     //obj.scale.set(0.1,0.1,0.1);
     //obj.position.x=-0.5;
     scene.add( obj );
-    abo= obj.getObjectByName('About me');
+   
+    AboutME = obj.getObjectByName('Plane029');
+    Projects =obj.getObjectByName('Plane028');
+    Resume=obj.getObjectByName('Plane030');
+    
     page.style.visibility='visible';
     loaderScreen.style.display='none';
 	},
@@ -152,10 +162,7 @@ document.getElementById('AboutME').addEventListener('click',function(event){
 //scene.add( object );
 
 //LOADED OBJECTS 
-if(typeof obj !== "undefined"){
-var abo = obj.getObjectByName('About me');
-console.log(abo);
-}
+
 
 
 
@@ -206,19 +213,66 @@ const controls =  new FirstPersonControls( camera, renderer.domElement );
       document.getElementById('instruction').style.visibility='visible';
       document.getElementById('welcome').style.display='none';
   });
+  
+  const mouse = new THREE.Vector2();
+  const raycaster = new THREE.Raycaster();
+  var intersects;
+  const black= new THREE.Color(0,0,0);
+  const orange = new THREE.Color(206,87,9);
+window.addEventListener('mousemove',function(event){
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    raycaster.setFromCamera( mouse, camera ); 
+    intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
+   // console.log(typeof intersects[0]);
+   
+    if(typeof intersects[0]  == 'undefined')
+    {
+      AboutME.material.emissive = black;
+      Resume.material.emissive = black;
+      Projects.material.emissive = black;
 
+    }
+    else
+    {
+      if(intersects[0].distance <40){
+      intersects[0].object.material.emissive = orange;
+      intersects[0].object.material.emissiveIntensity=0.003;
+    }
+  }
+});
+
+  document.body.addEventListener('click',function(event){
+    raycaster.setFromCamera( mouse, camera );
+    intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
+    if(intersects[0].distance<45){
+    switch(intersects[0].object.name)
+    {
+      case 'Plane029':
+        window.open( './AboutME.html','_blank');
+        console.log('ji');
+        break;
+      case 'Plane028':
+        window.open( './Projects.html','_blank');
+        break;
+        case 'Plane030':
+          window.open('./Resume.html','_blank');
+          break;
+
+    };}
+   
+
+  });
 
 
   function onHoverIn ()
   {
     controls.activeLook =false;
-    console.log('in');
   }
 
   function onHoverOut()
   {
     
-    console.log('out');
     controls.activeLook =true;
   }
 
@@ -248,12 +302,7 @@ const controls =  new FirstPersonControls( camera, renderer.domElement );
     //if(typeof obj !== "undefined")
     //obj.children[0].rotation.y+=0.05*deltaTime;
 
-    if(typeof abo!== "undefined"){
-      
-      //console.log(abo);
-      //abo.rotation.z+=0.03;
-      }
-
+    
 
 
     controls.update( clock.getDelta() );
