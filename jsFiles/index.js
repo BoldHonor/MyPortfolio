@@ -27,7 +27,7 @@ var loaderScreen = document.getElementById('loader');
 
 var Explore  = document.getElementById('explore');
 var isPhone = true;
-isPhone= function detectMob() {
+ function detectMob() {
   const toMatch = [
       /Android/i,
       /webOS/i,
@@ -42,6 +42,8 @@ isPhone= function detectMob() {
       return navigator.userAgent.match(toMatchItem);
   });
 }
+
+isPhone = detectMob();
 console.log('is phone test'+isPhone);
 
 page.style.visibility='hidden';
