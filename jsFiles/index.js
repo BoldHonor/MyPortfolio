@@ -155,7 +155,7 @@ document.getElementById('AboutME').addEventListener('click',function(event){
 
 
 //BLOOM
-/*
+
 const renderScene = new RenderPass( scene, camera );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( effectDiv.clientWidth, effectDiv.clientHeight ), 1.5, 0.4, 0.85 );
@@ -170,7 +170,7 @@ let composer;
       composer = new EffectComposer( renderer );
       composer.addPass( renderScene );
       composer.addPass( bloomPass );
-    */
+    
 
 //console.log(vertices);
 
@@ -288,7 +288,7 @@ window.addEventListener('mousemove',function(event){
 
     controls.update( clock.getDelta() );
     
-   // composer.render();
+    // composer.render();
     
     renderer.render(scene, camera); 
     requestAnimationFrame(animate);
