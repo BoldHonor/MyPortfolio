@@ -26,8 +26,11 @@ var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
 
 var Explore  = document.getElementById('explore');
-
-
+var isPhone = false;
+if(window.innerWidth<600)
+{
+  isPhone =true;
+}
 
 page.style.visibility='hidden';
 document.getElementById('instruction').style.visibility='hidden';
@@ -287,10 +290,16 @@ window.addEventListener('mousemove',function(event){
 
 
     controls.update( clock.getDelta() );
+    if(isPhone)
+    {
+      renderer.render(scene, camera); 
+    }
+    else{
+      composer.render();
+    }
     
-    composer.render();
     
-    //renderer.render(scene, camera); 
+    
     requestAnimationFrame(animate);
     
   }
@@ -302,5 +311,10 @@ window.addEventListener('mousemove',function(event){
     camera.updateProjectionMatrix();
     
     renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
+    isPhone=false;
+    if(window.innerWidth<600)
+    {
+  isPhone =true;
+    }
     controls.handleResize();
   }
