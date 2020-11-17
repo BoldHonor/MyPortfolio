@@ -20,7 +20,8 @@ effectDiv.style.position='fixed';
 var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2;
-
+let lookAt;
+var phoneSpeed = 0.002;
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
@@ -293,19 +294,44 @@ window.addEventListener('mousemove',function(event){
 }
 
 else{
-
+    lookAt = new THREE.Vector3(0,0,0);
   Explore.addEventListener('touchstart',function(){
     
     document.getElementById('instruction').style.visibility='visible';
     document.getElementById('welcome').style.display='none';
     document.getElementById("instructionImage").src = 'FinalAssets/Loader/up.png';
+  
     document.getElementById("instruction").style.width='100%';
     document.getElementById("instruction").style.display='flex';
     document.getElementById("instruction").style.justifyContent='center';
 
 });
 
+Explore.addEventListener('click',function(){
+    
+  document.getElementById('instruction').style.visibility='visible';
+  document.getElementById('welcome').style.display='none';
+  document.getElementById("instructionImage").src = 'FinalAssets/Loader/up.png';
+
+  document.getElementById("instruction").style.width='100%';
+  document.getElementById("instruction").style.display='flex';
+  document.getElementById("instruction").style.justifyContent='center';
+
+});
+
 }
+
+
+function moveFrwd()
+{
+  phoneSpeed = 1;
+  camera.getWorldDirection(lookAt);
+  camera.position.add(lookAt.multiplyScalar(phoneSpeed));
+  console.log(camera.position);
+}
+document.getElementById("instructionImage").addEventListener('touchmove',moveFrwd);
+document.getElementById("instructionImage").addEventListener('mousedown',moveFrwd);
+
 /*
   function onHoverIn ()
   {
@@ -347,6 +373,7 @@ else{
     if(isPhone)
     {
       renderer.render(scene, camera); 
+      //moveFrwd();
     }
     else{
       controls.update( clock.getDelta() ); 
