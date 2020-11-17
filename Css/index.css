@@ -159,8 +159,28 @@ body{
         color: rgb(211, 73, 9);
       mix-blend-mode: difference;
       font-family: Roboto;
-      font-size: 2vh;
+      font-size: 3vh;
       padding: 30px;
-      width: 50vw;
+      width: 80vw;
     }
+
+    #instruction img{
+        max-height: 100%;
+        width: auto;
+        
+    }
+    .welcome Button
+{
+    height: 10vh;
+    width :80vw;
+    background-color:rgb(231, 79, 19);
+    border: none;
+    font-family: Quicksand;
+    font-weight: bolder;
+    color: white;
+    align-self: center;
+    display: inline-block;
+    margin-top: 30px;
+    
+}   
 }
