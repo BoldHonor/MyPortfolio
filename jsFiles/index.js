@@ -87,6 +87,7 @@ window.oncontextmenu = function(event) {
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.extensions.get( 'EXT_color_buffer_float' );
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
     //renderer.setSize(200,400);
 
 
@@ -418,8 +419,8 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
     {
       renderer.render(scene, camera); 
       moveFrwd();
-      console.log('Width'+effectDiv.offsetWidth);
-      console.log('height'+effectDiv.offsetHeight);
+      console.log('Width'+effectDiv.clientWidth);
+      console.log('height'+effectDiv.clientHeight);
     }
     else{
       controls.update( clock.getDelta() ); 
