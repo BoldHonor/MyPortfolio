@@ -148,6 +148,7 @@ var Resume;
 
 const loa = new THREE.ObjectLoader();
 
+if(!isPhone){
 loa.load(
 	// resource URL
 	"FinalAssets/Models/scene1.json",
@@ -179,7 +180,41 @@ loa.load(
 	function ( err ) {
 		console.error( 'An error happened' );
 	}
-);
+);}
+else{
+  loa.load(
+    // resource URL
+    "FinalAssets/Models/scene MOBILE.json",
+  
+    // onLoad callback
+    // Here the loaded data is assumed to be an object
+    function ( obd ) {
+      // Add the loaded object to the scene
+      obj = obd;
+      obd.dispose();
+      //obj.scale.set(0.1,0.1,0.1);
+      //obj.position.x=-0.5;
+      scene.add( obj );
+     
+      AboutME = obj.getObjectByName('Plane029');
+      Projects =obj.getObjectByName('Plane028');
+      Resume=obj.getObjectByName('Plane030');
+      
+      page.style.visibility='visible';
+      loaderScreen.style.display='none';
+    },
+  
+    // onProgress callback
+    function ( xhr ) {
+      console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+    },
+  
+    // onError callback
+    function ( err ) {
+      console.error( 'An error happened' );
+    }
+  );
+}
 
 document.getElementById('AboutME').addEventListener('click',function(event){
   
