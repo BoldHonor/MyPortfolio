@@ -90,17 +90,28 @@ body{
 .welcome{
     position:absolute;
     z-index: 2;
-    right: 10%;
+   width: 100%;
     margin-top: 5%;
     display: inline-block;
     text-align: center;
+   
+    
 }
+.welcome2
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .welcome div {
     background-color: rgba(255, 255, 255, 0.87);
     color: rgb(211, 73, 9);
   mix-blend-mode: difference;
   font-family: Roboto;
+  font-size: large;
   padding: 30px;
+  width: 500px;
 }
 .welcome h2{
     

@@ -86,17 +86,19 @@ document.getElementById('instruction').style.visibility='hidden';
     camera.position.set(128,7.911,-36.6);
     camera.rotation.set(10,-80,-10);
     
-    renderer.setClearColor('#787676');
+   
     scene = new THREE.Scene();
     const clock = new THREE.Clock();
     //scene.background = new THREE.Color( '000000' );
     //scene.fog =   new THREE.Fog(0x787676,0.3,190);
     if(isPhone)
     {
-      scene.fog =   new THREE.Fog(0x787676,0.3,85);
+      renderer.setClearColor('#FFFFFF');
+      scene.fog =   new THREE.Fog(0xffffff,0.3,85);
 
     }
   else{
+    renderer.setClearColor('#787676');
     scene.fog =   new THREE.Fog(0x787676,0.3,190);
   }
  
@@ -215,8 +217,9 @@ let composer;
 
 
 //CONTROLS
-
-const controls =  new FirstPersonControls( camera, renderer.domElement );
+ let controls;
+if(!isPhone){
+ controls =  new FirstPersonControls( camera, renderer.domElement );
   controls.movementSpeed = 0;
   controls.lookSpeed = 0.06;
   controls.constrainVertical = true;
@@ -231,6 +234,7 @@ const controls =  new FirstPersonControls( camera, renderer.domElement );
       controls.movementSpeed=12;
       document.getElementById('instruction').style.visibility='visible';
       document.getElementById('welcome').style.display='none';
+      document.getElementById("instructionImage").src = 'FinalAssets/Loader/instruction.png';
   });
   
   const mouse = new THREE.Vector2();
@@ -285,8 +289,23 @@ window.addEventListener('mousemove',function(event){
    
 
   });
+}
 
+else{
 
+  Explore.addEventListener('touchstart',function(){
+    
+    document.getElementById('instruction').style.visibility='visible';
+    document.getElementById('welcome').style.display='none';
+    document.getElementById("instructionImage").src = 'FinalAssets/Loader/up.png';
+    document.getElementById("instruction").style.width='100%';
+    document.getElementById("instruction").style.display='flex';
+    document.getElementById("instruction").style.justifyContent='center';
+
+});
+
+}
+/*
   function onHoverIn ()
   {
     controls.activeLook =false;
@@ -296,16 +315,17 @@ window.addEventListener('mousemove',function(event){
   {
     
     controls.activeLook =true;
+   
   }
 
-  var hoverElements = document.getElementsByClassName('onHover');
+  var hoverElements = document.getElementsByClassName('navBar');
   console.log(hoverElements); 
 
   for (let i = 0; i < hoverElements.length; i++) {
-    hoverElements[i].addEventListener('mouseout',onHoverOut);
-    hoverElements[i].addEventListener('mouseover',onHoverIn);
+   // hoverElements[i].addEventListener('mouseleave',onHoverOut);
+   // hoverElements[i].addEventListener('mouseenter',onHoverIn);
   }
-
+*/
 
 
 
@@ -322,13 +342,13 @@ window.addEventListener('mousemove',function(event){
 
     
 
-
-    controls.update( clock.getDelta() );
+    
     if(isPhone)
     {
       renderer.render(scene, camera); 
     }
     else{
+      controls.update( clock.getDelta() ); 
       composer.render();
     }
     
