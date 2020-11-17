@@ -193,12 +193,6 @@ else{
   );
 }
 
-document.getElementById('AboutME').addEventListener('click',function(event){
-  
-  obj.remove(); 
-  window.location="./AboutME.html";
- // window.open("./AboutME.html", '_blank');
-});
 
 
 // Alternatively, to parse a previously loaded JSON structure
