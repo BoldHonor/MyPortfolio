@@ -126,6 +126,11 @@ var Resume;
 
 
 const loa = new THREE.ObjectLoader();
+const mouse = new THREE.Vector2();
+const raycaster = new THREE.Raycaster();
+var intersects;
+const black= new THREE.Color(0,0,0);
+const orange = new THREE.Color(206,87,9);
 
 if(!isPhone){
 loa.load(
@@ -147,6 +152,68 @@ loa.load(
     
     page.style.visibility='visible';
     loaderScreen.style.display='none';
+
+
+    Explore.addEventListener('click',function(){
+      controls.movementSpeed=12;
+      document.getElementById('instruction').style.visibility='visible';
+      document.getElementById('welcome').style.display='none';
+      document.getElementById("instructionImage").src = 'FinalAssets/Loader/instruction.png';
+  });
+  
+
+window.addEventListener('mousemove',function(event){
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    raycaster.setFromCamera( mouse, camera ); 
+    intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
+   // console.log(typeof intersects[0]);
+   
+    if(typeof intersects[0]  == 'undefined')
+    {
+      AboutME.material.emissive = black;
+      Resume.material.emissive = black;
+      Projects.material.emissive = black;
+
+    }
+    else
+    {
+      if(intersects[0].distance <40){
+      intersects[0].object.material.emissive = orange;
+      intersects[0].object.material.emissiveIntensity=0.003;
+    }
+  }
+});
+console.log('3comlete');
+  document.body.addEventListener('click',function(event){
+    raycaster.setFromCamera( mouse, camera );
+    intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
+    if(intersects[0].distance<45){
+    switch(intersects[0].object.name)
+    {
+      case 'Plane029':
+        //window.open( './AboutME.html','_blank');
+        window.location = './AboutME.html';
+        console.log('ji');
+        break;
+      case 'Plane028':
+       // window.open( './Projects.html','_blank');
+       window.location = './Projects.html';
+        break;
+        case 'Plane030':
+         // window.open('./Resume.html','_blank');
+         window.location = './Resume.html';
+          break;
+
+    };}
+   
+
+  });
+
+
+
+
+
 	},
 
 	// onProgress callback
@@ -242,65 +309,7 @@ if(!isPhone){
 
 
 
-  Explore.addEventListener('click',function(){
-      controls.movementSpeed=12;
-      document.getElementById('instruction').style.visibility='visible';
-      document.getElementById('welcome').style.display='none';
-      document.getElementById("instructionImage").src = 'FinalAssets/Loader/instruction.png';
-  });
-  
-  const mouse = new THREE.Vector2();
-  const raycaster = new THREE.Raycaster();
-  var intersects;
-  const black= new THREE.Color(0,0,0);
-  const orange = new THREE.Color(206,87,9);
-window.addEventListener('mousemove',function(event){
-    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-    raycaster.setFromCamera( mouse, camera ); 
-    intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
-   // console.log(typeof intersects[0]);
-   
-    if(typeof intersects[0]  == 'undefined')
-    {
-      AboutME.material.emissive = black;
-      Resume.material.emissive = black;
-      Projects.material.emissive = black;
 
-    }
-    else
-    {
-      if(intersects[0].distance <40){
-      intersects[0].object.material.emissive = orange;
-      intersects[0].object.material.emissiveIntensity=0.003;
-    }
-  }
-});
-console.log('3comlete');
-  document.body.addEventListener('click',function(event){
-    raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
-    if(intersects[0].distance<45){
-    switch(intersects[0].object.name)
-    {
-      case 'Plane029':
-        //window.open( './AboutME.html','_blank');
-        window.location = './AboutME.html';
-        console.log('ji');
-        break;
-      case 'Plane028':
-       // window.open( './Projects.html','_blank');
-       window.location = './Projects.html';
-        break;
-        case 'Plane030':
-         // window.open('./Resume.html','_blank');
-         window.location = './Resume.html';
-          break;
-
-    };}
-   
-
-  });
 }
 
 else{
