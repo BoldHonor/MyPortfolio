@@ -67,7 +67,7 @@ window.oncontextmenu = function(event) {
   {
     camera = new THREE.PerspectiveCamera(
       100,
-      screen.width / screen.height,
+      effectDiv.clientWidth / effectDiv.clientHeight,
       0.01,
      80
     );
@@ -434,15 +434,9 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
  
 
   function onWindowResize() {
-    if(!isPhone)
-    {camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
-    
-    }
-    
-    else
-    {camera.aspect = screen.width / screen.height;
-     
-    }
+  
+    camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
+
     renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
 
 
