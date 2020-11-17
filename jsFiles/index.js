@@ -193,7 +193,7 @@ else{
   );
 }
 
-
+console.log('1comlete');
 
 // Alternatively, to parse a previously loaded JSON structure
 //const object = loader.parse( a_json_object );
@@ -222,7 +222,7 @@ let composer;
       composer.addPass( renderScene );
       composer.addPass( bloomPass );
     
-
+      console.log('2comlete');
 //console.log(vertices);
 
 //LIGHT 
@@ -276,7 +276,7 @@ window.addEventListener('mousemove',function(event){
     }
   }
 });
-
+console.log('3comlete');
   document.body.addEventListener('click',function(event){
     raycaster.setFromCamera( mouse, camera );
     intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
@@ -332,7 +332,7 @@ Explore.addEventListener('click',function(){
 */
 }
 
-
+console.log('4comlete');
 function moveFrwd()
 {
  
@@ -381,7 +381,7 @@ insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
     //if(typeof obj !== "undefined")
     //obj.children[0].rotation.y+=0.05*deltaTime;
 
-    
+    console.log('5comlete');
 
     
     if(isPhone)
