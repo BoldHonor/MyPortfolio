@@ -103,7 +103,7 @@ window.oncontextmenu = function(event) {
     {
       renderer.setClearColor('#FFFFFF');
       scene.fog =   new THREE.Fog(0xffffff,0.3,85);
-      camera.rotation.set(10,2,-10);
+      camera.rotation.set(0,2,0);
     }
   else{
     renderer.setClearColor('#787676');
