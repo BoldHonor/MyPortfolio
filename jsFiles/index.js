@@ -21,7 +21,7 @@ var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2;
 let lookAt;
-var phoneSpeed = 0.5;
+var phoneSpeed = 0.5 ;
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
@@ -381,11 +381,10 @@ insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
    function animate() {
      deltaTime=Date.now()-currentTIme;
-     while(deltaTime>1)
-     {
-      deltaTime/=10;
+     
+      deltaTime/=1000;
 
-     }
+     
      
     //if(typeof obj !== "undefined")
     //obj.children[0].rotation.y+=0.05*deltaTime;
