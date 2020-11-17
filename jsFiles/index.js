@@ -21,7 +21,7 @@ var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2;
 let lookAt;
-var phoneSpeed = 0.002;
+var phoneSpeed = 0.02;
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
@@ -351,9 +351,9 @@ function moveFrwd()
 }
 
 
-insimg.addEventListener('touchstart',function(){phoneSpeed = 0.1; console.log(camera.position);});
+insimg.addEventListener('touchstart',function(){phoneSpeed = 0.5; console.log(camera.position);});
 insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
-insimg.addEventListener('mousedown',function(){phoneSpeed = 0.1; console.log(camera.position);});
+insimg.addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
 insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
