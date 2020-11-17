@@ -366,7 +366,7 @@ function moveFrwd()
  
   camera.getWorldDirection(lookAt);
   camera.position.add(lookAt.multiplyScalar(phoneSpeed));
-  console.log(camera.position);
+  //console.log(camera.position);
 }
 
 document.getElementById("instructionImage").addEventListener('touchstart',function(){phoneSpeed = 0.5;});
