@@ -91,7 +91,7 @@ window.oncontextmenu = function(event) {
     else
     renderer.setSize(screen.width, screen.height);
 
-    
+
     effectDiv.appendChild( renderer.domElement );
     camera.position.set(128,7.911,-36.6);
     
@@ -433,7 +433,7 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
     requestAnimationFrame(animate);
     
   }
-  animate();
+ 
 
   function onWindowResize() {
     if(!isPhone)
@@ -449,8 +449,10 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
 
 
     camera.updateProjectionMatrix();
-    
-    
-   
+    if(typeof controls!= 'undefined')
     controls.handleResize();
   }
+
+
+  onWindowResize();
+  animate();
