@@ -45,7 +45,7 @@ var isPhone = true;
 }
 
 isPhone = detectMob();
-
+isPhone = true;;
 console.log('is phone test '+isPhone);
 
 page.style.visibility='hidden';
