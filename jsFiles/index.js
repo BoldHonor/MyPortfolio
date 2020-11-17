@@ -67,7 +67,7 @@ window.oncontextmenu = function(event) {
   {
     camera = new THREE.PerspectiveCamera(
       70,
-      effectDiv.clientWidth / effectDiv.clientHeight,
+      screen.width / screen.height,
       0.01,
      80
     );
@@ -86,7 +86,12 @@ window.oncontextmenu = function(event) {
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.extensions.get( 'EXT_color_buffer_float' );
+    if(!isPhone)
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
+    else
+    renderer.setSize(screen.width, screen.height);
+
+    
     effectDiv.appendChild( renderer.domElement );
     camera.position.set(128,7.911,-36.6);
     
@@ -431,11 +436,21 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
   animate();
 
   function onWindowResize() {
+    if(!isPhone)
+    {camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
+    renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
+    }
+    
+    else
+    {camera.aspect = screen.width / screen.height;
+      renderer.setSize( screen.width, screen.width );  
+    }
+   
 
-    camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
+
     camera.updateProjectionMatrix();
     
-    renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
+    
    
     controls.handleResize();
   }
