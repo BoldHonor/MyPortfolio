@@ -86,8 +86,8 @@ window.oncontextmenu = function(event) {
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.extensions.get( 'EXT_color_buffer_float' );
-    //renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
-    renderer.setSize(200,400);
+    renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
+    //renderer.setSize(200,400);
 
 
     effectDiv.appendChild( renderer.domElement );
