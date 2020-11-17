@@ -84,7 +84,7 @@ document.getElementById('instruction').style.visibility='hidden';
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     effectDiv.appendChild( renderer.domElement );
     camera.position.set(128,7.911,-36.6);
-    camera.rotation.set(10,-80,-10);
+    
     
    
     scene = new THREE.Scene();
@@ -95,11 +95,12 @@ document.getElementById('instruction').style.visibility='hidden';
     {
       renderer.setClearColor('#FFFFFF');
       scene.fog =   new THREE.Fog(0xffffff,0.3,85);
-
+      camera.rotation.set(10,2,-10);
     }
   else{
     renderer.setClearColor('#787676');
     scene.fog =   new THREE.Fog(0x787676,0.3,190);
+    camera.rotation.set(10,-80,-10);
   }
  
 
