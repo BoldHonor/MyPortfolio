@@ -66,7 +66,7 @@ window.oncontextmenu = function(event) {
   if(isPhone)
   {
     camera = new THREE.PerspectiveCamera(
-      100,
+      120,
       effectDiv.clientWidth / effectDiv.clientHeight,
       0.01,
      80
@@ -346,14 +346,14 @@ function moveFrwd()
 {
  
   camera.getWorldDirection(lookAt);
-  camera.position.add(lookAt.multiplyScalar(phoneSpeed));
+  camera.position.add(lookAt.multiplyScalar(phoneSpeed*deltaTime));
   
 }
 
 
-insimg.addEventListener('touchstart',function(){phoneSpeed = 0.5; console.log(camera.position);});
+insimg.addEventListener('touchstart',function(){phoneSpeed = 0.1; console.log(camera.position);});
 insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
-insimg.addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
+insimg.addEventListener('mousedown',function(){phoneSpeed = 0.1; console.log(camera.position);});
 insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
