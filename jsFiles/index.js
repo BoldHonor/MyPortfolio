@@ -142,7 +142,7 @@ loa.load(
 	function ( obd ) {
     // Add the loaded object to the scene
     obj = obd;
-    obd.dispose();
+    
  
     scene.add( obj );
    
@@ -236,7 +236,7 @@ else{
     function ( obd ) {
       // Add the loaded object to the scene
       obj = obd;
-      obd.dispose();
+      
 
       scene.add( obj );
      
@@ -245,7 +245,7 @@ else{
       Resume=obj.getObjectByName('Plane030');
       
       page.style.visibility='visible';
-      loaderScreen.style.display='none';
+      loaderScreen.remove();
     },
   
     // onProgress callback
@@ -321,7 +321,7 @@ else{
     document.getElementById('welcome').style.display='none';
     insimg.src = 'FinalAssets/Loader/up.png';
   
-   ins.style.width='100%';
+    ins.style.width='100%';
     ins.style.display='flex';
     ins.style.justifyContent='center';
 
