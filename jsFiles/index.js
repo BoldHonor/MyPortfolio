@@ -369,9 +369,9 @@ function moveFrwd()
   //console.log(camera.position);
 }
 
-document.getElementById("instructionImage").addEventListener('touchstart',function(){phoneSpeed = 0.5;});
+document.getElementById("instructionImage").addEventListener('touchstart',function(){phoneSpeed = 0.5; console.log(camera.position);});
 document.getElementById("instructionImage").addEventListener('touchend',function(){phoneSpeed = 0;});
-document.getElementById("instructionImage").addEventListener('mousedown',function(){phoneSpeed = 0.5;});
+document.getElementById("instructionImage").addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
 document.getElementById("instructionImage").addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
@@ -415,7 +415,7 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
     {
       renderer.render(scene, camera); 
       moveFrwd();
-      
+      console.log( window.innerWidth);
     }
     else{
       controls.update( clock.getDelta() ); 
