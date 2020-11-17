@@ -109,9 +109,9 @@ body{
     color: rgb(211, 73, 9);
   mix-blend-mode: difference;
   font-family: Roboto;
-  font-size: large;
+  font-size: 20px;
   padding: 30px;
-  width: 500px;
+  width: 50vw;
 }
 .welcome h2{
     
@@ -149,4 +149,18 @@ body{
     max-height: 100%;
     width: auto;
     
+}
+
+
+@media only screen and (max-width:600px)
+{
+    .welcome div {
+        background-color: rgba(255, 255, 255, 0.87);
+        color: rgb(211, 73, 9);
+      mix-blend-mode: difference;
+      font-family: Roboto;
+      font-size: 2vh;
+      padding: 30px;
+      width: 50vw;
+    }
 }
