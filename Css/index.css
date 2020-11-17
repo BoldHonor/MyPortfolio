@@ -130,6 +130,7 @@ body{
     border: none;
     font-family: Quicksand;
     font-weight: bolder;
+    font-size: 20px;
     color: white;
     align-self: center;
     display: inline-block;
@@ -177,6 +178,7 @@ body{
     border: none;
     font-family: Quicksand;
     font-weight: bolder;
+    font-size: 3vh;
     color: white;
     align-self: center;
     display: inline-block;
