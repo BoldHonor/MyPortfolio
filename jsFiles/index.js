@@ -326,7 +326,7 @@ else{
     ins.style.justifyContent='center';
 
 });
-/*
+
 Explore.addEventListener('click',function(){
     
   document.getElementById('instruction').style.visibility='visible';
@@ -338,7 +338,7 @@ Explore.addEventListener('click',function(){
   document.getElementById("instruction").style.justifyContent='center';
 
 });
-*/
+
 }
 
 console.log('4comlete');
@@ -353,8 +353,8 @@ function moveFrwd()
 
 insimg.addEventListener('touchstart',function(){phoneSpeed = 0.5; console.log(camera.position);});
 insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
-//insimg.addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
-//insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
+insimg.addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
+insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
   {
