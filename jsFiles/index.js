@@ -142,7 +142,7 @@ loa.load(
 	function ( obd ) {
     // Add the loaded object to the scene
     obj = obd;
-    
+    console.log('3comlete');
  
     scene.add( obj );
    
@@ -184,7 +184,7 @@ window.addEventListener('mousemove',function(event){
     }
   }
 });
-console.log('3comlete');
+
   document.body.addEventListener('click',function(event){
     raycaster.setFromCamera( mouse, camera );
     intersects = raycaster.intersectObjects([AboutME,Projects,Resume]);
