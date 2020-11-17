@@ -50,7 +50,11 @@ console.log('is phone test'+isPhone);
 
 page.style.visibility='hidden';
 document.getElementById('instruction').style.visibility='hidden';
-
+window.oncontextmenu = function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  return false;
+};
 
 //LISTENERS
     window.addEventListener( 'resize', onWindowResize, false );
@@ -324,14 +328,16 @@ Explore.addEventListener('click',function(){
 
 function moveFrwd()
 {
-  phoneSpeed = 1;
+ 
   camera.getWorldDirection(lookAt);
   camera.position.add(lookAt.multiplyScalar(phoneSpeed));
   console.log(camera.position);
 }
-document.getElementById("instructionImage").addEventListener('touchmove',moveFrwd);
-document.getElementById("instructionImage").addEventListener('mousedown',moveFrwd);
 
+document.getElementById("instructionImage").addEventListener('touchstart',function(){phoneSpeed = 0.5;});
+document.getElementById("instructionImage").addEventListener('touchend',function(){phoneSpeed = 0;});
+document.getElementById("instructionImage").addEventListener('mousedown',function(){phoneSpeed = 0.5;});
+document.getElementById("instructionImage").addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
   {
@@ -373,7 +379,8 @@ document.getElementById("instructionImage").addEventListener('mousedown',moveFrw
     if(isPhone)
     {
       renderer.render(scene, camera); 
-      //moveFrwd();
+      moveFrwd();
+      
     }
     else{
       controls.update( clock.getDelta() ); 
