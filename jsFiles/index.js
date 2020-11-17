@@ -415,8 +415,8 @@ document.getElementById("instructionImage").addEventListener('mouseup',function(
     {
       renderer.render(scene, camera); 
       moveFrwd();
-      console.log('Width'+effectDiv.clientWidth);
-      console.log('height'+effectDiv.clientHeight);
+      console.log('Width'+screen.width);
+      console.log('height'+screen.height);
     }
     else{
       controls.update( clock.getDelta() ); 
