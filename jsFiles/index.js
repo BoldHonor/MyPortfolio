@@ -25,7 +25,7 @@ var phoneSpeed = 0.002;
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
-
+var insimg =document.getElementById("instructionImage");
 var Explore  = document.getElementById('explore');
 var isPhone = true;
  function detectMob() {
@@ -45,8 +45,8 @@ var isPhone = true;
 }
 
 isPhone = detectMob();
-isPhone=true;
-console.log('is phone test'+isPhone);
+
+console.log('is phone test '+isPhone);
 
 page.style.visibility='hidden';
 document.getElementById('instruction').style.visibility='hidden';
@@ -98,8 +98,7 @@ window.oncontextmenu = function(event) {
    
     scene = new THREE.Scene();
     const clock = new THREE.Clock();
-    //scene.background = new THREE.Color( '000000' );
-    //scene.fog =   new THREE.Fog(0x787676,0.3,190);
+    
     if(isPhone)
     {
       renderer.setClearColor('#FFFFFF');
@@ -113,31 +112,7 @@ window.oncontextmenu = function(event) {
   }
  
 
- /*
-//GEOMETRIES
-const geometry = new THREE.IcosahedronBufferGeometry(0.3,1);
-//const geometry = new THREE.BoxBufferGeometry(0.3,0.3,0.3);
-const material = new THREE.MeshLambertMaterial({color:'#F4AA20',emissiveIntensity :8 }); 
-const icoSphere= new THREE.Mesh( geometry, material );
-const wireframe = new THREE.WireframeGeometry( geometry );
-const lineMaterial = new THREE.LineBasicMaterial({color:'#FFFFFF',linewidth :1});
-const line = new THREE.LineSegments( wireframe,lineMaterial );
 
-var pos=  geometry.attributes.position.array;
-const particlesGeometry = new THREE.BufferGeometry();
-			particlesGeometry.setAttribute( 'position', new THREE.BufferAttribute( pos, 3 ) );
-      var particleMaterial = new THREE.PointsMaterial( { color: 0x888888,size:0.02 } );
-
-
-var points = new THREE.Points(particlesGeometry, particleMaterial);
-icoSphere.add(points);
-//scene.add( points );
-//scene.add(icoSphere);
-icoSphere.position.setX(-0.6);
-line.position.x=-0.6
-//scene.add(line);
-*/
-//Loader
 
 var obj;
 
@@ -163,8 +138,7 @@ loa.load(
     // Add the loaded object to the scene
     obj = obd;
     obd.dispose();
-    //obj.scale.set(0.1,0.1,0.1);
-    //obj.position.x=-0.5;
+ 
     scene.add( obj );
    
     AboutME = obj.getObjectByName('Plane029');
@@ -196,8 +170,7 @@ else{
       // Add the loaded object to the scene
       obj = obd;
       obd.dispose();
-      //obj.scale.set(0.1,0.1,0.1);
-      //obj.position.x=-0.5;
+
       scene.add( obj );
      
       AboutME = obj.getObjectByName('Plane029');
@@ -337,19 +310,20 @@ window.addEventListener('mousemove',function(event){
 }
 
 else{
+  
     lookAt = new THREE.Vector3(0,0,0);
   Explore.addEventListener('touchstart',function(){
-    
-    document.getElementById('instruction').style.visibility='visible';
+    var ins = document.getElementById("instruction");
+    ins.style.visibility='visible';
     document.getElementById('welcome').style.display='none';
-    document.getElementById("instructionImage").src = 'FinalAssets/Loader/up.png';
+    insimg.src = 'FinalAssets/Loader/up.png';
   
-    document.getElementById("instruction").style.width='100%';
-    document.getElementById("instruction").style.display='flex';
-    document.getElementById("instruction").style.justifyContent='center';
+   ins.style.width='100%';
+    ins.style.display='flex';
+    ins.style.justifyContent='center';
 
 });
-
+/*
 Explore.addEventListener('click',function(){
     
   document.getElementById('instruction').style.visibility='visible';
@@ -361,7 +335,7 @@ Explore.addEventListener('click',function(){
   document.getElementById("instruction").style.justifyContent='center';
 
 });
-
+*/
 }
 
 
@@ -370,13 +344,14 @@ function moveFrwd()
  
   camera.getWorldDirection(lookAt);
   camera.position.add(lookAt.multiplyScalar(phoneSpeed));
-  //console.log(camera.position);
+  
 }
 
-document.getElementById("instructionImage").addEventListener('touchstart',function(){phoneSpeed = 0.5; console.log(camera.position);});
-document.getElementById("instructionImage").addEventListener('touchend',function(){phoneSpeed = 0;});
-document.getElementById("instructionImage").addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
-document.getElementById("instructionImage").addEventListener('mouseup',function(){phoneSpeed = 0;});
+
+insimg.addEventListener('touchstart',function(){phoneSpeed = 0.5; console.log(camera.position);});
+insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
+//insimg.addEventListener('mousedown',function(){phoneSpeed = 0.5; console.log(camera.position);});
+//insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
   {
