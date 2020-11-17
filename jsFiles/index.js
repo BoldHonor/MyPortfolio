@@ -151,7 +151,7 @@ loa.load(
     Resume=obj.getObjectByName('Plane030');
     
     page.style.visibility='visible';
-    loaderScreen.style.display='none';
+    loaderScreen.remove();
 
 
     Explore.addEventListener('click',function(){
@@ -390,7 +390,7 @@ insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
     //if(typeof obj !== "undefined")
     //obj.children[0].rotation.y+=0.05*deltaTime;
 
-    console.log('5comlete');
+   
 
     
     if(isPhone)
