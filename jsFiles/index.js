@@ -44,6 +44,7 @@ var isPhone = true;
 }
 
 isPhone = detectMob();
+isPhone=true;
 console.log('is phone test'+isPhone);
 
 page.style.visibility='hidden';
@@ -60,10 +61,10 @@ document.getElementById('instruction').style.visibility='hidden';
   if(isPhone)
   {
     camera = new THREE.PerspectiveCamera(
-      40,
+      70,
       effectDiv.clientWidth / effectDiv.clientHeight,
       0.01,
-      80
+     80
     );
   }
   else{
@@ -73,6 +74,8 @@ document.getElementById('instruction').style.visibility='hidden';
         0.01,
         300
       );
+
+     
     }
       //camera = new THREE.OrthographicCamera( effectDiv.clientWidth / - 2, effectDiv.clientWidth / 2, effectDiv.clientHeight / 2,effectDiv.clientHeight / - 2, 0.01, 1000 );
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
@@ -87,8 +90,15 @@ document.getElementById('instruction').style.visibility='hidden';
     scene = new THREE.Scene();
     const clock = new THREE.Clock();
     //scene.background = new THREE.Color( '000000' );
+    //scene.fog =   new THREE.Fog(0x787676,0.3,190);
+    if(isPhone)
+    {
+      scene.fog =   new THREE.Fog(0x787676,0.3,85);
+
+    }
+  else{
     scene.fog =   new THREE.Fog(0x787676,0.3,190);
-  
+  }
  
 
  /*
