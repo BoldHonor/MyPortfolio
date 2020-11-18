@@ -54,7 +54,7 @@ console.log('is phone test '+isPhone);
 
 if(isPhone)
 {
-  ScreenOrientation.lock('landscape');
+  
   var target= new THREE.Vector3(-0.631,13.313,-27.756);
   
 
