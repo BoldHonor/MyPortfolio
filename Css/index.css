@@ -109,7 +109,7 @@ body{
     color: rgb(211, 73, 9);
   mix-blend-mode: difference;
   font-family: Roboto;
-  font-size: 20px;
+  font-size: 2vw;
   padding: 30px;
   width: 50vw;
 }
