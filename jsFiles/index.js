@@ -67,8 +67,9 @@ if(isPhone)
   var phoneright = document.getElementById('right');
   var phoneleft = document.getElementById('left');
   var phonemove = document.getElementById('move');
+  var phoneback = document.getElementById('back');
   var phoneControls = [phoneup,phonedown,phoneright,phoneleft];
-  var phoneLookSpeed = degToRad(1);
+  var phoneLookSpeed = degToRad(2);
   var phoneLookStatus = 1;
   var direction;
   var phi=degToRad(150);
@@ -458,6 +459,11 @@ phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.1; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
 phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.1; });
 phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
+phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.1; });
+phoneback.addEventListener('touchendt',function(){phoneSpeed =0; });
+phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.1; });
+phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
+
 /*
   function onHoverIn ()
   {

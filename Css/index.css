@@ -218,11 +218,20 @@ body{
     position: absolute;
 
     width: 60vw;
-    height: 60vh;
+    height: 30vh;
     top:20vh;
     left: 20vw;
-   
-    
+  
+}
+#back
+{
+    position: absolute;
+
+    width: 60vw;
+    height: 30vh;
+    bottom:20vh;
+    left: 20vw;
+  
 }
 @media only screen and (orientation:portrait)
 {
