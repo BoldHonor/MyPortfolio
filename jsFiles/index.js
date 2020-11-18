@@ -426,9 +426,9 @@ function moveFrwd()
 }
 
 
-phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.6; });
+phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.1; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
-phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.6; });
+phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.1; });
 phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
