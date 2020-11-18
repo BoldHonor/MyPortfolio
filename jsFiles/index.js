@@ -455,13 +455,13 @@ function moveFrwd()
 }
 
 
-phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.1; });
+phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.06; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
-phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.1; });
+phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.06; });
 phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
-phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.1; });
+phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.06; });
 phoneback.addEventListener('touchendt',function(){phoneSpeed =0; });
-phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.1; });
+phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.06; });
 phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
 /*
