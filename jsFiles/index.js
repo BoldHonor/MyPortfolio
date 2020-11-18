@@ -22,6 +22,7 @@ var deltaTime =1;
 const PARTICLE_SIZE = 2;
 let lookAt;
 var phoneSpeed = 0;
+
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
@@ -67,37 +68,27 @@ if(isPhone)
   var phoneleft = document.getElementById('left');
   var phonemove = document.getElementById('move');
   var phoneControls = [phoneup,phonedown,phoneright,phoneleft];
-  var phoneLookSpeed = degToRad(15);
+  var phoneLookSpeed = degToRad(1);
+  var phoneLookStatus = 1;
+  var direction;
   var phi=degToRad(150);
     var theta=degToRad(-150);
-  function startRotation(direction)
+
+
+  function startRotation(dir)
   {
+    direction=dir;
+    phoneLookStatus=1;
     
-    var position = camera.position;
-  
-    
-    switch(direction)
-    {
-      case 'up':
-        phi += -phoneLookSpeed;
-        break;
-      case 'down':
-        phi += phoneLookSpeed;
-        break;
-      case 'right':
-        theta += -phoneLookSpeed;
-        break;
-      case 'left':
-        theta += phoneLookSpeed;
-        break;
-    };
-      //console.log(target);
-			target.setFromSphericalCoords( 1, phi, theta ).add( position );
-      console.log('final ' + target);
-			camera.lookAt( target );
   }
   
+  function stopRotation(dir)
+  {
+    direction=dir;
+    phoneLookStatus=0;
+  }
   
+
   
   phoneControls.some((crtinput)=>{
       crtinput.addEventListener('touchstart',function(){
@@ -105,13 +96,50 @@ if(isPhone)
 
       });
 
-      crtinput.addEventListener('click',function(){
+      crtinput.addEventListener('mousedown',function(){
         startRotation(this.id);
+
+      });
+
+      crtinput.addEventListener('touchend',function(){
+        stopRotation(this.id);
+
+      });
+
+      crtinput.addEventListener('mouseup',function(){
+        stopRotation(this.id);
 
       });
   });
 
 
+}
+
+function phoneControlsUpdate()
+{
+  
+  
+  var position = camera.position;
+  switch(direction)
+  {
+    case 'up':
+      phi += -phoneLookSpeed*phoneLookStatus;
+      break;
+    case 'down':
+      phi += phoneLookSpeed*phoneLookStatus;
+      break;
+    case 'right':
+      theta += -phoneLookSpeed*phoneLookStatus;
+      break;
+    case 'left':
+      theta += phoneLookSpeed*phoneLookStatus;
+      break;
+  };
+    //console.log(phoneLookStatus);
+    
+    target.setFromSphericalCoords( 1, phi, theta ).add( position );
+    
+    camera.lookAt( target );
 }
 page.style.visibility='hidden';
 document.getElementById('instruction').style.visibility='hidden';
@@ -131,7 +159,7 @@ window.oncontextmenu = function(event) {
   if(isPhone)
   {
     camera = new THREE.PerspectiveCamera(
-      120,
+      60,
       effectDiv.clientWidth / effectDiv.clientHeight,
       0.01,
      80
@@ -471,6 +499,7 @@ phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
     {
       renderer.render(scene, camera); 
       moveFrwd();
+      phoneControlsUpdate();
       
     }
     else{
