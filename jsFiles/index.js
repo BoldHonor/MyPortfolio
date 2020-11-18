@@ -21,12 +21,15 @@ var currentTIme=Date.now();
 var deltaTime =1;
 const PARTICLE_SIZE = 2;
 let lookAt;
-var phoneSpeed = 0.5 ;
+var phoneSpeed = 0;
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
 var loaderScreen = document.getElementById('loader');
+var ins = document.getElementById("instruction");
 var insimg =document.getElementById("instructionImage");
 var Explore  = document.getElementById('explore');
+
+
 var isPhone = true;
  function detectMob() {
   const toMatch = [
@@ -48,6 +51,68 @@ isPhone = detectMob();
 isPhone = true;;
 console.log('is phone test '+isPhone);
 
+if(isPhone)
+{
+
+  var target= new THREE.Vector3(-0.631,13.313,-27.756);
+  
+
+  function degToRad(num)
+  {
+    return  num*3.14/360;
+  }
+  var phoneup = document.getElementById('up');
+  var phonedown = document.getElementById('down');
+  var phoneright = document.getElementById('right');
+  var phoneleft = document.getElementById('left');
+  var phonemove = document.getElementById('move');
+  var phoneControls = [phoneup,phonedown,phoneright,phoneleft];
+  var phoneLookSpeed = degToRad(15);
+  var phi=degToRad(150);
+    var theta=degToRad(-150);
+  function startRotation(direction)
+  {
+    
+    var position = camera.position;
+  
+    
+    switch(direction)
+    {
+      case 'up':
+        phi += -phoneLookSpeed;
+        break;
+      case 'down':
+        phi += phoneLookSpeed;
+        break;
+      case 'right':
+        theta += -phoneLookSpeed;
+        break;
+      case 'left':
+        theta += phoneLookSpeed;
+        break;
+    };
+      //console.log(target);
+			target.setFromSphericalCoords( 1, phi, theta ).add( position );
+      console.log('final ' + target);
+			camera.lookAt( target );
+  }
+  
+  
+  
+  phoneControls.some((crtinput)=>{
+      crtinput.addEventListener('touchstart',function(){
+        startRotation(this.id);
+
+      });
+
+      crtinput.addEventListener('click',function(){
+        startRotation(this.id);
+
+      });
+  });
+
+
+}
 page.style.visibility='hidden';
 document.getElementById('instruction').style.visibility='hidden';
 window.oncontextmenu = function(event) {
@@ -71,6 +136,8 @@ window.oncontextmenu = function(event) {
       0.01,
      80
     );
+
+    
   }
   else{
     camera = new THREE.PerspectiveCamera(
@@ -104,6 +171,7 @@ window.oncontextmenu = function(event) {
       renderer.setClearColor('#FFFFFF');
       scene.fog =   new THREE.Fog(0xffffff,0.3,85);
       camera.rotation.set(0,2,0);
+     
     }
   else{
     renderer.setClearColor('#787676');
@@ -316,26 +384,33 @@ else{
   
     lookAt = new THREE.Vector3(0,0,0);
   Explore.addEventListener('touchstart',function(){
-    var ins = document.getElementById("instruction");
+    document.getElementById('controls').style.zIndex='3';
     ins.style.visibility='visible';
     document.getElementById('welcome').style.display='none';
-    insimg.src = 'FinalAssets/Loader/up.png';
-  
+    insimg.src = 'FinalAssets/Loader/mobileInstructions.png';
+    insimg.style.width="100%";
+    insimg.style.height='auto';
+    ins.style.backgroundColor = 'rgba(226, 141, 14, 0.747)';
     ins.style.width='100%';
     ins.style.display='flex';
     ins.style.justifyContent='center';
-
+    ins.remove();
 });
 
 Explore.addEventListener('click',function(){
     
-  document.getElementById('instruction').style.visibility='visible';
+  ins.style.visibility='visible';
   document.getElementById('welcome').style.display='none';
-  document.getElementById("instructionImage").src = 'FinalAssets/Loader/up.png';
-
-  document.getElementById("instruction").style.width='100%';
-  document.getElementById("instruction").style.display='flex';
-  document.getElementById("instruction").style.justifyContent='center';
+  document.getElementById("instructionImage").src = 'FinalAssets/Loader/mobileInstructions.png';
+  document.getElementById('controls').style.zIndex='3';
+ /* insimg.style.width="100%";
+    insimg.style.height='auto';
+    ins.style.backgroundColor = 'rgba(226, 109, 14, 0.06)';*/
+  ins.style.width='100%';
+  ins.style.height='100%';
+  ins.style.display='flex';
+  ins.style.justifyContent='center';
+  ins.remove();
 
 });
 
@@ -351,10 +426,10 @@ function moveFrwd()
 }
 
 
-insimg.addEventListener('touchstart',function(){phoneSpeed = 1; console.log(camera.position);});
-insimg.addEventListener('touchend',function(){phoneSpeed = 0;});
-insimg.addEventListener('mousedown',function(){phoneSpeed = 1; console.log(camera.position);});
-insimg.addEventListener('mouseup',function(){phoneSpeed = 0;});
+phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.6; });
+phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
+phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.6; });
+phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
 /*
   function onHoverIn ()
   {
