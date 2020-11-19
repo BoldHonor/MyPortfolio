@@ -260,7 +260,7 @@ user-select:none;
 {
     z-index: 2; 
     position: absolute;
-    right: 4vw;
+    right: 0vw;
     bottom: 50%;
     width: auto;
     text-align: center;
@@ -268,7 +268,7 @@ user-select:none;
 }
 #goTo div{
     background-color: orange;
-    font-size: 2vh;
+    font-size: 4vh;
     font-family: 'Quicksand';
     font-weight: bold;
     color: white;
