@@ -30,6 +30,7 @@ var loaderScreen = document.getElementById('loader');
 var ins = document.getElementById("instruction");
 var insimg =document.getElementById("instructionImage");
 var Explore  = document.getElementById('explore');
+<<<<<<< HEAD
 var linkPage = document.getElementById('linkPage');
 let pageNavigator = function(){};
 var pageNavigatorLinks = {
@@ -37,6 +38,8 @@ var pageNavigatorLinks = {
     Resume: {link:'./AboutME.html',active:false},
     Projects: {link:'./AboutME.html',active:false}
 };
+=======
+>>>>>>> parent of a130295... Mobile page navigation
 
 
 let isPhone = true;
@@ -78,7 +81,7 @@ if(isPhone)
   var phonemove = document.getElementById('move');
   var phoneback = document.getElementById('back');
   var phoneControls = [phoneup,phonedown,phoneright,phoneleft];
-  var phoneLookSpeed = degToRad(1);
+  var phoneLookSpeed = degToRad(2);
   var phoneLookStatus = 1;
   var direction;
   var phi=degToRad(150);
@@ -128,7 +131,7 @@ if(isPhone)
 function phoneControlsUpdate()
 {
   
-  pageNavigator();
+  
   var position = camera.position;
   switch(direction)
   {
@@ -210,8 +213,8 @@ window.oncontextmenu = function(event) {
     
     if(isPhone)
     {
-      renderer.setClearColor('#787676');
-      scene.fog =   new THREE.Fog(0x787676,0.3,85);
+      renderer.setClearColor('#FFFFFF');
+      scene.fog =   new THREE.Fog(0xffffff,0.3,85);
       camera.rotation.set(0,2,0);
       renderer.setPixelRatio(window.devicePixelRatio * 1/4);
     }
@@ -398,6 +401,7 @@ else{
       
       page.style.visibility='visible';
       loaderScreen.remove();
+<<<<<<< HEAD
 
 
       function makeVisible(name)
@@ -438,6 +442,8 @@ else{
       linkPage.addEventListener('click',function(){
         window.location = pageNavigatorLinks[this.innerHTML].link;
       });
+=======
+>>>>>>> parent of a130295... Mobile page navigation
     },
   
     // onProgress callback
@@ -449,10 +455,8 @@ else{
     function ( err ) {
       console.error( 'An error happened' );
     }
-    
   );
 }
-
 
 console.log('1comlete');
 
@@ -587,8 +591,6 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
 
 
-
-
    function animate() {
      deltaTime=Date.now()-currentTIme;
      
@@ -607,6 +609,12 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       renderer.render(scene, camera); 
       moveFrwd();
       phoneControlsUpdate();
+      var t = new THREE.Vector2(0,0);
+      renderer.getSize ( t );
+
+      console.log('width '+t.x +'height '+t.y + 'device pix '+ renderer.getPixelRatio () );  
+      console.log('h2 '+effectDiv.offsetHeight +'height '+effectDiv.clientHeight);
+     // console.log('2 width '+window.screen.availHeight+'height '+window.screen.availHeight );
     }
     else{
       pageNavigator();
