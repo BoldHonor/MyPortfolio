@@ -512,7 +512,8 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
     
     if(isPhone)
     {
-      renderer.render(scene, camera); 
+      //renderer.render(scene, camera); 
+      composer.render();
       moveFrwd();
       phoneControlsUpdate();
       var t = new THREE.Vector2(0,0);
