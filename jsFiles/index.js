@@ -31,6 +31,7 @@ var ins = document.getElementById("instruction");
 var insimg =document.getElementById("instructionImage");
 var Explore  = document.getElementById('explore');
 <<<<<<< HEAD
+<<<<<<< HEAD
 var linkPage = document.getElementById('linkPage');
 let pageNavigator = function(){};
 var pageNavigatorLinks = {
@@ -38,6 +39,8 @@ var pageNavigatorLinks = {
     Resume: {link:'./AboutME.html',active:false},
     Projects: {link:'./AboutME.html',active:false}
 };
+=======
+>>>>>>> parent of a130295... Mobile page navigation
 =======
 >>>>>>> parent of a130295... Mobile page navigation
 
@@ -402,6 +405,7 @@ else{
       page.style.visibility='visible';
       loaderScreen.remove();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
       function makeVisible(name)
@@ -442,6 +446,8 @@ else{
       linkPage.addEventListener('click',function(){
         window.location = pageNavigatorLinks[this.innerHTML].link;
       });
+=======
+>>>>>>> parent of a130295... Mobile page navigation
 =======
 >>>>>>> parent of a130295... Mobile page navigation
     },
