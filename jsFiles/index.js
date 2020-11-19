@@ -22,6 +22,7 @@ var deltaTime =1;
 const PARTICLE_SIZE = 2;
 let lookAt;
 var phoneSpeed = 0;
+var phoneCurrentSpeed = 1;
 
 var onHover = document.getElementsByClassName('onHover');
 var page= document.getElementById('page');
@@ -455,18 +456,20 @@ function moveFrwd()
 {
  
   camera.getWorldDirection(lookAt);
+  
+
   camera.position.add(lookAt.multiplyScalar(phoneSpeed*deltaTime));
   
 }
 
 
-phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.003; });
+phonemove.addEventListener('touchstart',function(){phoneSpeed = phoneCurrentSpeed; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
-phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.003; });
+phonemove.addEventListener('mousedown',function(){phoneSpeed = phoneCurrentSpeed; });
 phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
-phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.003; });
+phoneback.addEventListener('touchstart',function(){phoneSpeed =-phoneCurrentSpeed; });
 phoneback.addEventListener('touchendt',function(){phoneSpeed =0; });
-phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.003; });
+phoneback.addEventListener('mousedown',function(){phoneSpeed = -phoneCurrentSpeed; });
 phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
 /*
@@ -496,8 +499,8 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
    function animate() {
      deltaTime=Date.now()-currentTIme;
      
-      deltaTime/=1000;
-
+      deltaTime/=100;
+    currentTIme = Date.now();
      
      
     //if(typeof obj !== "undefined")
