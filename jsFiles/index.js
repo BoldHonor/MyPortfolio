@@ -460,13 +460,13 @@ function moveFrwd()
 }
 
 
-phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.06; });
+phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.01; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
-phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.06; });
+phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.01; });
 phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
-phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.06; });
+phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.01; });
 phoneback.addEventListener('touchendt',function(){phoneSpeed =0; });
-phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.06; });
+phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.01; });
 phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
 /*
@@ -511,7 +511,7 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       renderer.render(scene, camera); 
       moveFrwd();
       phoneControlsUpdate();
-      
+      console.log('width '+window.innerWidth +'height '+window.innerHeight);      
     }
     else{
       controls.update( clock.getDelta() ); 
