@@ -184,7 +184,7 @@ window.oncontextmenu = function(event) {
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.extensions.get( 'EXT_color_buffer_float' );
-    renderer.setPixelRatio(window.devicePixelRatio);
+    //renderer.setPixelRatio(window.devicePixelRatio);
     if(!isPhone)
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     else
