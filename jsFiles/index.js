@@ -33,9 +33,9 @@ var Explore  = document.getElementById('explore');
 var linkPage = document.getElementById('linkPage');
 let pageNavigator = function(){};
 var pageNavigatorLinks = {
-    AboutMe: {link:'./AboutMe.html',active:false},
-    Resume: {link:'./AboutMe.html',active:false},
-    Projects: {link:'./AboutMe.html',active:false}
+    AboutMe: {link:'./AboutME.html',active:false},
+    Resume: {link:'./AboutME.html',active:false},
+    Projects: {link:'./AboutME.html',active:false}
 };
 
 
