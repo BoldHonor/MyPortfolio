@@ -512,7 +512,7 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       moveFrwd();
       phoneControlsUpdate();
       console.log('width '+window.innerWidth +'height '+window.innerHeight  + 'device pix '+ window.devicePixelRatio);   
-
+      console.log('2 width '+window.innerWidth +'height '+window.screen.availHeight );
     }
     else{
       controls.update( clock.getDelta() ); 
