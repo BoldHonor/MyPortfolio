@@ -187,7 +187,7 @@ window.oncontextmenu = function(event) {
     if(!isPhone)
     renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     else
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.screen.availWidth, +window.screen.availHeight );
     
     //renderer.setSize(200,400);
 
@@ -511,8 +511,7 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       renderer.render(scene, camera); 
       moveFrwd();
       phoneControlsUpdate();
-      console.log('width '+window.innerWidth +'height '+window.innerHeight  + 'device pix '+ window.devicePixelRatio);   
-      console.log('2 width '+window.innerWidth +'height '+window.screen.availHeight );
+      
     }
     else{
       controls.update( clock.getDelta() ); 
@@ -531,7 +530,7 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
     camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
     if(isPhone)
     {
-    renderer.setSize(window.innerWidth, window.innerHeight );  
+    renderer.setSize(window.screen.availWidth, +window.screen.availHeight );  
     }
     else
     {
