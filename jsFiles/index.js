@@ -31,7 +31,8 @@ var insimg =document.getElementById("instructionImage");
 var Explore  = document.getElementById('explore');
 
 
-var isPhone = true;
+let isPhone = true;
+
  function detectMob() {
   const toMatch = [
       /Android/i,
@@ -527,10 +528,14 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
   function onWindowResize() {
   
     camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
-    if(isphone)
-    renderer.setSize( window.innerWidth, window.innerHeight );  
+    if(isPhone)
+    {
+    renderer.setSize(window.innerWidth, window.innerHeight );  
+    }
     else
-    renderer.setSize( effectDiv.clientWidth , effectDiv.clientHeight );  
+    {
+    renderer.setSize(effectDiv.clientWidth , effectDiv.clientHeight );  
+    }
     camera.updateProjectionMatrix();
     if(typeof controls!= 'undefined')
     controls.handleResize();
