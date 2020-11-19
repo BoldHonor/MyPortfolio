@@ -182,8 +182,12 @@ window.oncontextmenu = function(event) {
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio * 2);
     renderer.extensions.get( 'EXT_color_buffer_float' );
-    renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    if(!isPhone)
+    renderer.setSize(effectDiv.clientWidth, effectDiv.clientHeight);
+    else
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    
     //renderer.setSize(200,400);
 
 
@@ -523,10 +527,10 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
   function onWindowResize() {
   
     camera.aspect = effectDiv.clientWidth / effectDiv.clientHeight;
-
-    renderer.setSize( effectDiv.clientWidth, effectDiv.clientHeight );  
-
-
+    if(isphone)
+    renderer.setSize( window.innerWidth, window.innerHeight );  
+    else
+    renderer.setSize( effectDiv.clientWidth , effectDiv.clientHeight );  
     camera.updateProjectionMatrix();
     if(typeof controls!= 'undefined')
     controls.handleResize();
