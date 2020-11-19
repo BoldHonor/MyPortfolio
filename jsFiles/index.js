@@ -511,7 +511,10 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       renderer.render(scene, camera); 
       moveFrwd();
       phoneControlsUpdate();
-      //console.log('width '+window.innerWidth +'height '+window.innerHeight  + 'device pix '+ window.devicePixelRatio);   
+      var t = new THREE.Vector2(0,0);
+      renderer.getSize ( t );
+
+      console.log('width '+t.x +'height '+t.y + 'device pix '+ renderer.getPixelRatio () );   
      // console.log('2 width '+window.screen.availHeight+'height '+window.screen.availHeight );
     }
     else{
