@@ -244,6 +244,10 @@ const black= new THREE.Color(0,0,0);
 const orange = new THREE.Color(206,87,9);
 
 if(!isPhone){
+
+  document.getElementById('motioncontrols').remove();
+  document.getElementById('controls').remove();
+  
 loa.load(
 	// resource URL
 	"FinalAssets/Models/scene1.json",
@@ -264,13 +268,50 @@ loa.load(
     page.style.visibility='visible';
     loaderScreen.remove();
 
+    //////////////////////////////
+    function makeVisible(name)
+    {
+      if(pageNavigatorLinks[name].active) return;
+      console.log(pageNavigatorLinks[name].link);
+      linkPage.innerHTML = name;
+      linkPage.style.display='block';
+      pageNavigatorLinks[name].active = true;
 
+    }
+
+
+      pageNavigator =  function()
+      {
+          if(camera.position.distanceTo(AboutME.position) < 40)
+          {
+              makeVisible('AboutMe');
+          }
+          else if(camera.position.distanceTo(Resume.position) < 40)
+          {
+            makeVisible('Resume');
+          }
+          else if (camera.position.distanceTo(Projects.position) < 40)
+          {
+            makeVisible('Projects');
+          }
+          else{
+            linkPage.style.display = 'none';
+            pageNavigatorLinks['AboutMe'].active = false;
+            pageNavigatorLinks['Resume'].active = false;
+            pageNavigatorLinks['Projects'].active = false;
+          }}
+          linkPage.addEventListener('click',function(){
+            window.location = pageNavigatorLinks[this.innerHTML].link;
+          });
+    /////////////////////////
     Explore.addEventListener('click',function(){
       controls.movementSpeed=12;
       document.getElementById('instruction').style.visibility='visible';
       document.getElementById('welcome').style.display='none';
       document.getElementById("instructionImage").src = 'FinalAssets/Loader/instruction.png';
   });
+  
+
   
 
 window.addEventListener('mousemove',function(event){
@@ -390,11 +431,13 @@ else{
             pageNavigatorLinks['Resume'].active = false;
             pageNavigatorLinks['Projects'].active = false;
           }
-          linkPage.addEventListener('click',function(){
-            window.location = pageNavigatorLinks[this.innerHTML].link;
-          });
+         
           
       }
+
+      linkPage.addEventListener('click',function(){
+        window.location = pageNavigatorLinks[this.innerHTML].link;
+      });
     },
   
     // onProgress callback
@@ -510,7 +553,7 @@ function moveFrwd()
   
 }
 
-
+if(isPhone){
 phonemove.addEventListener('touchstart',function(){phoneSpeed = phoneCurrentSpeed; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
 phonemove.addEventListener('mousedown',function(){phoneSpeed = phoneCurrentSpeed; });
@@ -519,7 +562,7 @@ phoneback.addEventListener('touchstart',function(){phoneSpeed =-phoneCurrentSpee
 phoneback.addEventListener('touchendt',function(){phoneSpeed =0; });
 phoneback.addEventListener('mousedown',function(){phoneSpeed = -phoneCurrentSpeed; });
 phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
-
+}
 /*
   function onHoverIn ()
   {
@@ -567,6 +610,7 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       phoneControlsUpdate();
     }
     else{
+      pageNavigator();
       controls.update( clock.getDelta() ); 
       composer.render();
     }
