@@ -182,7 +182,7 @@ window.oncontextmenu = function(event) {
     }
       //camera = new THREE.OrthographicCamera( effectDiv.clientWidth / - 2, effectDiv.clientWidth / 2, effectDiv.clientHeight / 2,effectDiv.clientHeight / - 2, 0.01, 1000 );
     renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio * 2);
+    renderer.setPixelRatio(window.devicePixelRatio * 1/2);
     renderer.extensions.get( 'EXT_color_buffer_float' );
     //renderer.setPixelRatio(window.devicePixelRatio);
     if(!isPhone)
