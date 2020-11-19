@@ -30,6 +30,13 @@ var loaderScreen = document.getElementById('loader');
 var ins = document.getElementById("instruction");
 var insimg =document.getElementById("instructionImage");
 var Explore  = document.getElementById('explore');
+var linkPage = document.getElementById('linkPage');
+let pageNavigator = function(){};
+var pageNavigatorLinks = {
+    AboutMe: {link:'./AboutMe.html',active:false},
+    Resume: {link:'./AboutMe.html',active:false},
+    Projects: {link:'./AboutMe.html',active:false}
+};
 
 
 let isPhone = true;
@@ -71,7 +78,7 @@ if(isPhone)
   var phonemove = document.getElementById('move');
   var phoneback = document.getElementById('back');
   var phoneControls = [phoneup,phonedown,phoneright,phoneleft];
-  var phoneLookSpeed = degToRad(2);
+  var phoneLookSpeed = degToRad(1);
   var phoneLookStatus = 1;
   var direction;
   var phi=degToRad(150);
@@ -121,7 +128,7 @@ if(isPhone)
 function phoneControlsUpdate()
 {
   
-  
+  pageNavigator();
   var position = camera.position;
   switch(direction)
   {
@@ -203,8 +210,8 @@ window.oncontextmenu = function(event) {
     
     if(isPhone)
     {
-      renderer.setClearColor('#FFFFFF');
-      scene.fog =   new THREE.Fog(0xffffff,0.3,85);
+      renderer.setClearColor('#787676');
+      scene.fog =   new THREE.Fog(0x787676,0.3,85);
       camera.rotation.set(0,2,0);
       renderer.setPixelRatio(window.devicePixelRatio * 1/2);
     }
@@ -350,6 +357,44 @@ else{
       
       page.style.visibility='visible';
       loaderScreen.remove();
+
+
+      function makeVisible(name)
+    {
+      if(pageNavigatorLinks[name].active) return;
+      console.log(pageNavigatorLinks[name].link);
+      linkPage.innerHTML = name;
+      linkPage.style.display='block';
+      pageNavigatorLinks[name].active = true;
+
+    }
+
+
+      pageNavigator=  function()
+      {
+          if(camera.position.distanceTo(AboutME.position) < 40)
+          {
+              makeVisible('AboutMe');
+          }
+          else if(camera.position.distanceTo(Resume.position) < 40)
+          {
+            makeVisible('Resume');
+          }
+          else if (camera.position.distanceTo(Projects.position) < 40)
+          {
+            makeVisible('Projects');
+          }
+          else{
+            linkPage.style.display = 'none';
+            pageNavigatorLinks['AboutMe'].active = false;
+            pageNavigatorLinks['Resume'].active = false;
+            pageNavigatorLinks['Projects'].active = false;
+          }
+          linkPage.addEventListener('click',function(){
+            window.location = pageNavigatorLinks[this.innerHTML].link;
+          });
+          
+      }
     },
   
     // onProgress callback
@@ -361,8 +406,10 @@ else{
     function ( err ) {
       console.error( 'An error happened' );
     }
+    
   );
 }
+
 
 console.log('1comlete');
 
@@ -497,6 +544,8 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
 
 
+
+
    function animate() {
      deltaTime=Date.now()-currentTIme;
      
@@ -516,12 +565,6 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       composer.render();
       moveFrwd();
       phoneControlsUpdate();
-      var t = new THREE.Vector2(0,0);
-      renderer.getSize ( t );
-
-      console.log('width '+t.x +'height '+t.y + 'device pix '+ renderer.getPixelRatio () );  
-      console.log('h2 '+effectDiv.offsetHeight +'height '+effectDiv.clientHeight);
-     // console.log('2 width '+window.screen.availHeight+'height '+window.screen.availHeight );
     }
     else{
       controls.update( clock.getDelta() ); 

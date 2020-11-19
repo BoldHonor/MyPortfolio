@@ -223,7 +223,7 @@ body{
 {
     position: absolute;
     z-index: 3;
-    width: 30vw;
+    width: auto;
     
     right: 0;
     bottom: 0;
@@ -255,6 +255,31 @@ user-select:none;
     
   
 }
+
+#goTo
+{
+    z-index: 2; 
+    position: absolute;
+    right: 4vw;
+    bottom: 50%;
+    width: auto;
+    text-align: center;
+
+}
+#goTo div{
+    background-color: orange;
+    font-size: 2vh;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    color: white;
+    padding: 5vh;
+    
+}
+
+
+
+
+
 @media only screen and (orientation:portrait)
 {
     .welcome div {
