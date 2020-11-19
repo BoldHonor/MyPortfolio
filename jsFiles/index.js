@@ -460,13 +460,13 @@ function moveFrwd()
 }
 
 
-phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.01; });
+phonemove.addEventListener('touchstart',function(){phoneSpeed = 0.003; });
 phonemove.addEventListener('touchend',function(){phoneSpeed = 0;});
-phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.01; });
+phonemove.addEventListener('mousedown',function(){phoneSpeed = 0.003; });
 phonemove.addEventListener('mouseup',function(){phoneSpeed = 0;});
-phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.01; });
+phoneback.addEventListener('touchstart',function(){phoneSpeed =-0.003; });
 phoneback.addEventListener('touchendt',function(){phoneSpeed =0; });
-phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.01; });
+phoneback.addEventListener('mousedown',function(){phoneSpeed = -0.003; });
 phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
 
 /*
