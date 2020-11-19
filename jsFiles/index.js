@@ -604,8 +604,7 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
     
     if(isPhone)
     {
-      //renderer.render(scene, camera); 
-      composer.render();
+      renderer.render(scene, camera); 
       moveFrwd();
       phoneControlsUpdate();
     }
