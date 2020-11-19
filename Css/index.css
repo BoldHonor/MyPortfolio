@@ -219,24 +219,40 @@ body{
     
 }
 
-#move
+#motioncontrols
 {
     position: absolute;
-
-    width: 60vw;
-    height: 30vh;
-    top:20vh;
-    left: 20vw;
+    z-index: 3;
+    width: 30vw;
+    
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-family: 'Quicksand';
+    color: white;
+    font-weight: bold;
+}
+#motioncontrols div{
+    padding: 5vh;
+    background-color: orange;
+    -webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+#move
+{
+    
+    margin-bottom: 1vh;
   
 }
 #back
 {
-    position: absolute;
 
-    width: 60vw;
-    height: 30vh;
-    bottom:20vh;
-    left: 20vw;
+    
   
 }
 @media only screen and (orientation:portrait)
