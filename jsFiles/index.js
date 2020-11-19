@@ -58,7 +58,7 @@ let isPhone = true;
 }
 
 isPhone = detectMob();
-isPhone = true;
+
 console.log('is phone test '+isPhone);
 
 if(isPhone)
