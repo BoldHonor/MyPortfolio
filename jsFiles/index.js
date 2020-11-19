@@ -511,7 +511,8 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       renderer.render(scene, camera); 
       moveFrwd();
       phoneControlsUpdate();
-      console.log('width '+window.innerWidth +'height '+scene.height);      
+      console.log('width '+window.innerWidth +'height '+scene.height  + 'device pix '+ window.devicePixelRatio);   
+
     }
     else{
       controls.update( clock.getDelta() ); 
