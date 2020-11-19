@@ -58,7 +58,7 @@ let isPhone = true;
 }
 
 isPhone = detectMob();
-isPhone = true;;
+isPhone = true;
 console.log('is phone test '+isPhone);
 
 if(isPhone)
@@ -213,7 +213,7 @@ window.oncontextmenu = function(event) {
       renderer.setClearColor('#787676');
       scene.fog =   new THREE.Fog(0x787676,0.3,85);
       camera.rotation.set(0,2,0);
-      renderer.setPixelRatio(window.devicePixelRatio * 1/2);
+      renderer.setPixelRatio(window.devicePixelRatio * 1/4);
     }
   else{
     renderer.setClearColor('#787676');

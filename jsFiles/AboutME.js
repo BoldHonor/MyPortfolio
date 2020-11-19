@@ -15,6 +15,26 @@ var imageDoc = document.getElementById("ig");
             let distancePerFrame = 1;
             var k=0;
             currenTime=Date.now();
+
+            let isPhone = true;
+
+ function detectMob() {
+  const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+  ];
+
+  return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+  });
+}
+
+isPhone = detectMob();
             for(let i =0;i<frameNumber;i++)
             {
                 
@@ -50,7 +70,7 @@ var imageDoc = document.getElementById("ig");
             imagelist[frameNumber-1].onload =function ()
             {
 
-                if(window.innerWidth>(600))
+                if(!isPhone)
                 iq();
                 else
                 frameSpeed++;
