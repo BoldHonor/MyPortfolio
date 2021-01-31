@@ -38,6 +38,14 @@ var pageNavigatorLinks = {
     Projects: {link:'./AboutME.html',active:false}
 };
 
+let maxX , maxY , maxZ , minX , minY , minZ; 
+
+maxX = 145;
+minX = -132;
+minY=6;
+maxY=20;
+maxZ=31;
+minZ =-109;
 
 let isPhone = true;
 
@@ -599,7 +607,6 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
     //if(typeof obj !== "undefined")
     //obj.children[0].rotation.y+=0.05*deltaTime;
 
-   
 
     
     if(isPhone)
@@ -615,12 +622,19 @@ phoneback.addEventListener('mouseup',function(){phoneSpeed = 0;});
       composer.render();
     }
     
+    if(camera.position.x > maxX)camera.position.x= maxX;
+  if(camera.position.x < minX) camera.position.x= minX;
+  if(camera.position.y > maxY) camera.position.y= maxY;
+  if(camera.position.y < minY) {camera.position.y= minY; console.log('out of bounds');}
+  if(camera.position.z > maxZ) camera.position.z= maxZ;
+  if(camera.position.z < minZ) camera.position.z= minZ;
     
     
     requestAnimationFrame(animate);
     
   }
- 
+  
+
 
   function onWindowResize() {
   
