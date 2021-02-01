@@ -49,6 +49,10 @@ body{
     text-align: center;
 }
 
+.navBar a 
+{
+    text-decoration: none;
+}
 .navBar ul {
     margin: 0px;
 }

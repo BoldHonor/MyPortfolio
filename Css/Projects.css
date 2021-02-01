@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+
+
+body
+{
+    background-color: black;
+   
+}
+
+#background{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#background video
+
+{
+    position: absolute;
+    height: auto;
+    width: 100%;
+}
+
+
+#projects
+{
+    top: 20%;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+   
+}
+
+#projects p
+{
+    color: white;
+    text-align: center;
+}
+.column
+{
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+      
+   
+}
+.column a{
+    text-decoration: none;
+}
+
+.cardholder
+{
+    width: 30%;
+    height: 30%;
+    float: left;
+    margin: 1%;
+    object-fit: cover;
+    overflow: hidden;
+    
+}
+
+.card
+{
+    background-color: rgba(185, 182, 182, 0.5);
+    border-radius: 2%;
+    
+    padding:3%;
+}
+
+.card:hover
+{
+    border-color: white ;
+    border-style: solid;
+   
+}
+.card p{
+    font-family: Quicksand;
+}
+.card img{
+ width: 100%;
+ height: auto;
+}
+
+
+
+
+
+
+
+
+
+.navBar{
+    z-index: 2;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+
+.navBar div{
+    
+    
+    text-align: center;
+}
+
+.navBar a 
+{
+    text-decoration: none;
+}
+.navBar ul {
+    margin: 0px;
+}
+.navBar li{
+    display: inline-block;
+    padding: 2%;
+    margin: 0px 0px 0px 0px;
+    font-family: 'Roboto';
+    border-radius: 5%;
+   cursor: pointer;
+
+}
+
+.navBar li:hover{
+    background-color: rgba(218, 210, 210, 0.705);
+
+}
+
+.navBar li p{
+    
+   
+    color: rgb(236, 229, 229);
+    cursor: pointer;
+
+}
+
+.navHR{
+    width: 100%;
+    color: white;
+    z-index: 3;
+    position: absolute;
+    height: 0.1px;
+    margin: 0;
+}
