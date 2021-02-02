@@ -156,3 +156,23 @@ h2{
     height: 0.1px;
     margin: 0;
 }
+
+@media only screen and (orientation:portrait)
+{
+
+    .cardholder
+    {
+        float: none;
+        width: 80%;
+        display: flex;
+        align-self: center;
+        margin: 0 auto 3% auto;
+        
+    }
+    .column
+    {
+        display: block;
+        text-align: center;
+    }
+
+}
