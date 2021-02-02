@@ -176,4 +176,9 @@ h2{
         text-align: center;
     }
 
+    .card p{
+        font-size: 3vh;
+    }
+
+
 }
