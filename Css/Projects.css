@@ -160,6 +160,13 @@ h2{
 
 @media only screen and (orientation:portrait)
 {
+    #background video
+
+{
+    
+    height: 100%;
+    width: auto;
+}
 
     .cardholder
     {
@@ -180,5 +187,9 @@ h2{
         font-size: 3vh;
     }
 
+    h2
+    {
+        font-size: 5vh;
+    }
 
 }
