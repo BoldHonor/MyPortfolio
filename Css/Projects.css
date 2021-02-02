@@ -93,9 +93,10 @@ body
 
 
 h2{
-    color: white;
+    color: black;
     font-family:Roboto ;
     text-align: center;
+    background-color: white;
 }
 
 
