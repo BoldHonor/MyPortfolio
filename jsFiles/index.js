@@ -34,8 +34,8 @@ var linkPage = document.getElementById('linkPage');
 let pageNavigator = function(){};
 var pageNavigatorLinks = {
     AboutMe: {link:'./AboutME.html',active:false},
-    Resume: {link:'./AboutME.html',active:false},
-    Projects: {link:'./Project.html',active:false}
+    Resume: {link:'./Project Descriptions/cv.html',active:false},
+    Projects: {link:'./Projects.html',active:false}
 };
 
 let maxX , maxY , maxZ , minX , minY , minZ; 
@@ -309,7 +309,7 @@ loa.load(
             pageNavigatorLinks['Projects'].active = false;
           }}
           linkPage.addEventListener('click',function(){
-            window.location = pageNavigatorLinks[this.innerHTML].link;
+            window.open(pageNavigatorLinks[this.innerHTML].link);
           });
     /////////////////////////
     Explore.addEventListener('click',function(){
@@ -352,17 +352,17 @@ window.addEventListener('mousemove',function(event){
     switch(intersects[0].object.name)
     {
       case 'Plane029':
-        //window.open( './AboutME.html','_blank');
-        window.location = './AboutME.html';
+        window.open( './AboutME.html','_blank');
+        //window.location = './AboutME.html';
         console.log('ji');
         break;
       case 'Plane028':
-       // window.open( './Projects.html','_blank');
-       window.location = './Projects.html';
+        window.open( './Projects.html','_blank');
+       //window.location = './Projects.html';
         break;
         case 'Plane030':
-         // window.open('./Resume.html','_blank');
-         window.location = './Resume.html';
+         window.open('./Project Descriptions/cv.html','_blank');
+         //window.location = './Resume.html';
           break;
 
     };}
@@ -444,7 +444,7 @@ else{
       }
 
       linkPage.addEventListener('click',function(){
-        window.location = pageNavigatorLinks[this.innerHTML].link;
+        window.open(pageNavigatorLinks[this.innerHTML].link);
       });
     },
   
