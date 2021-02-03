@@ -35,7 +35,7 @@ let pageNavigator = function(){};
 var pageNavigatorLinks = {
     AboutMe: {link:'./AboutME.html',active:false},
     Resume: {link:'./AboutME.html',active:false},
-    Projects: {link:'./AboutME.html',active:false}
+    Projects: {link:'./Project.html',active:false}
 };
 
 let maxX , maxY , maxZ , minX , minY , minZ; 
